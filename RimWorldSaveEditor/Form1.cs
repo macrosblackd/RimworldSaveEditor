@@ -75,8 +75,6 @@ namespace RimWorldSaveEditor
                 nodeMapList = handler.Populate();
                 colonistListBox.DataSource = nodeMapList;
                 colonistListBox.DisplayMember = "fullName";
-                debugBox.DataSource = nodeMapList;
-                debugBox.DisplayMember = "fullName";
             }
         }
 

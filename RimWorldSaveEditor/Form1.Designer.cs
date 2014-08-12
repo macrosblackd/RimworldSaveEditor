@@ -58,8 +58,6 @@
             this.openFileButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.backupCheck = new System.Windows.Forms.CheckBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.debugBox = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.healthBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -67,14 +65,12 @@
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -367,24 +363,6 @@
             this.backupCheck.UseVisualStyleBackColor = true;
             this.backupCheck.CheckedChanged += new System.EventHandler(this.backupCheck_CheckedChanged);
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.debugBox);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(330, 375);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // debugBox
-            // 
-            this.debugBox.FormattingEnabled = true;
-            this.debugBox.Location = new System.Drawing.Point(17, 16);
-            this.debugBox.Name = "debugBox";
-            this.debugBox.Size = new System.Drawing.Size(297, 342);
-            this.debugBox.TabIndex = 0;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label12);
@@ -427,7 +405,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -466,8 +443,6 @@
         private System.Windows.Forms.TextBox artisticBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox colonistListBox;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ListBox debugBox;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox healthBox;
