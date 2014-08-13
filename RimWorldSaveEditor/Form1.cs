@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace RimWorldSaveEditor
 {
@@ -17,26 +18,16 @@ namespace RimWorldSaveEditor
 
         //Need access to XmlHandler and List<PawnNodeMap> globally in class
         XmlHandler handler;
-        List<PawnNodeMap> nodeMapList;
+        NodeMap nodeMap;
 
-
-        /**TODO
-         * 
-         * Build Gui
-         * Handle Events
-         * Figure out how to modify xml (more)easily
-         * 
-         **/
-
-
-
-
+        //Will need to null check colony name
         public Form1()
         {
             InitializeComponent();
             Version asmVersion = Assembly.GetExecutingAssembly().GetName().Version;
             string version = String.Format("{0}.{1}.{2}", asmVersion.Major, asmVersion.Minor, asmVersion.Build);
             this.Text = String.Format("RimWorld Save Editor Version: {0}", version);
+            ToggleControls();
             
         }
 
@@ -72,9 +63,10 @@ namespace RimWorldSaveEditor
                 {
                     handler.ToggleBackup();
                 }
-                nodeMapList = handler.Populate();
-                colonistListBox.DataSource = nodeMapList;
+                nodeMap = handler.Populate();
+                colonistListBox.DataSource = nodeMap.pawnNodeList;
                 colonistListBox.DisplayMember = "fullName";
+                ToggleControls();
             }
         }
 
@@ -86,155 +78,117 @@ namespace RimWorldSaveEditor
             }
             ListBox box = (ListBox)sender;
             int index = box.SelectedIndex;
-            PawnNodeMap nodeMap = nodeMapList[index];
+            SortedList<string, XmlNode> skillNodes = nodeMap.pawnNodeList[index].skillNodes;
 
-            if (nodeMap.skillArtistic != null) { artisticBox.Text = nodeMap.skillArtistic.InnerText; }
-            else { artisticBox.Text = "0"; }
+            artisticBox.Text = skillNodes["Artistic"].InnerText;
 
-            if (nodeMap.skillConstruction != null) { constructionBox.Text = nodeMap.skillConstruction.InnerText; }
-            else { artisticBox.Text = "0"; }
+            constructionBox.Text = skillNodes["Construction"].InnerText;
 
-            if (nodeMap.skillCooking != null) { cookingBox.Text = nodeMap.skillCooking.InnerText; }
-            else { artisticBox.Text = "0"; }
+            cookingBox.Text = skillNodes["Cooking"].InnerText; 
 
-            if (nodeMap.skillCrafting != null) { craftingBox.Text = nodeMap.skillCrafting.InnerText; }
+            craftingBox.Text = skillNodes["Crafting"].InnerText;
 
-            if (nodeMap.skillGrowing != null) { growingBox.Text = nodeMap.skillGrowing.InnerText; }
+            growingBox.Text = skillNodes["Growing"].InnerText;
 
-            if (nodeMap.skillMedicine != null) { medicineBox.Text = nodeMap.skillMedicine.InnerText; }
+            medicineBox.Text = skillNodes["Medicine"].InnerText;
 
-            if (nodeMap.skillMelee != null) { meleeBox.Text = nodeMap.skillMelee.InnerText; }
+            meleeBox.Text = skillNodes["Melee"].InnerText;
 
-            if (nodeMap.skillMining != null) { miningBox.Text = nodeMap.skillMining.InnerText; }
+            miningBox.Text = skillNodes["Mining"].InnerText;
 
-            if (nodeMap.skillResearch != null) { researchBox.Text = nodeMap.skillResearch.InnerText; }
+            researchBox.Text = skillNodes["Research"].InnerText;
 
-            if (nodeMap.skillShooting != null) { shootingBox.Text = nodeMap.skillShooting.InnerText; }
-            
-            if (nodeMap.skillSocial != null ) { socialBox.Text = nodeMap.skillSocial.InnerText; }
-            
-            healthBox.Text = nodeMap.pawnHealth.InnerText;
+            shootingBox.Text = skillNodes["Shooting"].InnerText;
+
+            socialBox.Text = skillNodes["Social"].InnerText;
+
+            healthBox.Text = nodeMap.pawnNodeList[index].pawnHealth.InnerText;
         }
 
         private void artisticBox_TextChanged(object sender, EventArgs e)
-        {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            handler.ModifyNode(nodeMap.skillArtistic, artisticBox.Text);
+        {   
+            handler.ModifyNode(GetSelectedPawn().skillNodes["Artistic"], artisticBox.Text);
         }
 
         private void constructionBox_TextChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            handler.ModifyNode(nodeMap.skillConstruction, constructionBox.Text);
+            handler.ModifyNode(GetSelectedPawn().skillNodes["Construction"], constructionBox.Text);
         }
 
         private void cookingBox_TextChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            handler.ModifyNode(nodeMap.skillCooking, cookingBox.Text);
+            handler.ModifyNode(GetSelectedPawn().skillNodes["Cooking"], cookingBox.Text);
         }
 
         private void craftingBox_TextChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            handler.ModifyNode(nodeMap.skillCrafting, craftingBox.Text);
+            handler.ModifyNode(GetSelectedPawn().skillNodes["Crafting"], craftingBox.Text);
         }
 
         private void growingBox_TextChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            handler.ModifyNode(nodeMap.skillGrowing, growingBox.Text);
+            handler.ModifyNode(GetSelectedPawn().skillNodes["Growing"], growingBox.Text);
         }
 
         private void medicineBox_TextChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            handler.ModifyNode(nodeMap.skillMedicine, medicineBox.Text);
+            handler.ModifyNode(GetSelectedPawn().skillNodes["Medicine"], medicineBox.Text);
         }
 
         private void meleeBox_TextChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            handler.ModifyNode(nodeMap.skillMelee, meleeBox.Text);
+            handler.ModifyNode(GetSelectedPawn().skillNodes["Melee"], meleeBox.Text);
         }
 
         private void miningBox_TextChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            handler.ModifyNode(nodeMap.skillMining, miningBox.Text);
+            handler.ModifyNode(GetSelectedPawn().skillNodes["Mining"], miningBox.Text);
         }
 
         private void researchBox_TextChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            if(nodeMap.skillResearch == null)
-            handler.ModifyNode(nodeMap.skillResearch, researchBox.Text);
+            handler.ModifyNode(GetSelectedPawn().skillNodes["Research"], researchBox.Text);
         }
 
         private void shootingBox_TextChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            handler.ModifyNode(nodeMap.skillShooting, shootingBox.Text);
+            handler.ModifyNode(GetSelectedPawn().skillNodes["Shooting"], shootingBox.Text);
         }
 
         private void socialBox_TextChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            handler.ModifyNode(nodeMap.skillSocial, socialBox.Text);
+            handler.ModifyNode(GetSelectedPawn().skillNodes["Social"], socialBox.Text);
         }
 
         private void healthBox_TextChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
-            handler.ModifyNode(nodeMap.pawnHealth, healthBox.Text);
+            handler.ModifyNode(GetSelectedPawn().pawnHealth, healthBox.Text);
         }
+
+        private NodeMap.PawnNode GetSelectedPawn()
+        {
+            return nodeMap.pawnNodeList[colonistListBox.SelectedIndex];
+        }
+
+
+
+        private void ToggleControls()
+        {
+            backupCheck.Enabled = !backupCheck.Enabled;
+            saveButton.Enabled = !saveButton.Enabled;
+            socialBox.Enabled = !socialBox.Enabled;
+            shootingBox.Enabled = !shootingBox.Enabled;
+            researchBox.Enabled = !researchBox.Enabled;
+            miningBox.Enabled = !miningBox.Enabled;
+            meleeBox.Enabled = !meleeBox.Enabled;
+            medicineBox.Enabled = !medicineBox.Enabled;
+            growingBox.Enabled = !growingBox.Enabled;
+            craftingBox.Enabled = !craftingBox.Enabled;
+            cookingBox.Enabled = !cookingBox.Enabled;
+            constructionBox.Enabled = !constructionBox.Enabled;
+            artisticBox.Enabled = !artisticBox.Enabled;
+            healthBox.Enabled = !healthBox.Enabled;
+        }
+
     }
 }

@@ -31,125 +31,96 @@ namespace RimWorldSaveEditor
         }
 
         //intialize document, Populate PawnNodeMaps return list of maps
-        public List<PawnNodeMap> Populate()
+        public NodeMap Populate()
         {
             saveFile = new XmlDocument();
             saveFile.Load(filePath);
 
-            XmlNodeList pawnFactionNodes = saveFile.SelectNodes(Globals.XMLFINDPAWN);
-            List<PawnNodeMap> nodeMapList = new List<PawnNodeMap>();
+            //rebuild from scratch
+            NodeMap nodeMap = new NodeMap();
 
-            foreach(XmlNode pawnFactionNode in pawnFactionNodes)
+            //Populate Colony nodes
+            XmlNode colonyName = saveFile.SelectSingleNode("map/colonyInfo/colonyName");
+            if (colonyName.InnerText != null) { nodeMap.colonyName = colonyName; }
+
+            //Populate research nodes
+            XmlNodeList researchNames = saveFile.SelectNodes("map/researchManager/progress/keys");
+            XmlNodeList researchValues = saveFile.SelectNodes("map/researchManager/progress/values");
+
+            SortedList<string, XmlNode> researchNodes = new SortedList<string, XmlNode>();
+            for (int i = 0; i < researchNames.Count; i++)
             {
-                XmlNode pawnNode = pawnFactionNode.ParentNode;
-                XmlNode nameNodes = pawnNode.SelectSingleNode("story");
-                XmlNodeList skillNodes = pawnNode.SelectNodes(Globals.XMLSKILLNODE);
-                PawnNodeMap nodeMap = new PawnNodeMap()
-                {
-                    parent = pawnNode,
-                    nameFirst = nameNodes.SelectSingleNode("name.first"),
-                    nameNick = nameNodes.SelectSingleNode("name.nick"),
-                    nameLast = nameNodes.SelectSingleNode("name.last"),
-                    pawnHealth = pawnNode.SelectSingleNode("healthTracker/pawnHealth"),
-                };
+                string name = researchNames.Item(i).InnerText;
+                XmlNode value = researchValues.Item(i);
+                researchNodes.Add(name, value);
+            }
+            nodeMap.researchNodes = researchNodes;
 
-                /**
-                 * Get Skills for map
-                 **/
-                foreach (XmlNode skillNode in skillNodes)
+            //Get pawns by finding pawns in colonist faction
+            XmlNodeList pawnFactionNodes = saveFile.SelectNodes(Globals.XMLFINDPAWN);
+            List<XmlNode> pawns = new List<XmlNode>();
+            foreach (XmlNode pawnFactionNode in pawnFactionNodes)
+            {
+                pawns.Add(pawnFactionNode.ParentNode);
+            }
+
+            List<NodeMap.PawnNode> pawnNodeList = new List<NodeMap.PawnNode>();
+            //populate colonist nodes
+            foreach(XmlNode pawnNode in pawns)
+            {
+                //new pawn node object
+                NodeMap.PawnNode workingPawnNode = new NodeMap.PawnNode();
+               
+                //get name nodes
+                XmlNode storyNode = pawnNode.SelectSingleNode("story");
+                workingPawnNode.nameFirst = storyNode.SelectSingleNode("name.first");
+                workingPawnNode.nameLast = storyNode.SelectSingleNode("name.last");
+                workingPawnNode.nameNick = storyNode.SelectSingleNode("name.nick");
+                //Concatenate full name
+                workingPawnNode.InitNames();
+
+                //get pawn health node
+                workingPawnNode.pawnHealth = pawnNode.SelectSingleNode("healthTracker/pawnHealth");
+
+                //Psychology to come later
+
+
+                
+                XmlNodeList skillNodes = pawnNode.SelectNodes("skills/skills/li");
+                SortedList<string, XmlNode> skillNodesList = new SortedList<string, XmlNode>();
+                SortedList<String, XmlNode> passionNodesList = new SortedList<string, XmlNode>();
+
+                //loop for skills
+                foreach(XmlNode skillNode in skillNodes)
                 {
-                    string def = skillNode.SelectSingleNode("def").InnerText;
-                    switch(def)
+                    string skillName = skillNode.SelectSingleNode("def").InnerText;
+                    XmlNode skillLevel = skillNode.SelectSingleNode("level");
+                    
+                    //Fix for NRE's due to non-existing node for 0 values
+                    if (skillLevel == null)
                     {
-                        case "Artistic":
-                            nodeMap.skillArtistic = skillNode.SelectSingleNode("level");
-                            if (nodeMap.skillArtistic == null)
-                            {
-                                FixSkillNode(skillNode);
-                                nodeMap.skillArtistic = skillNode.SelectSingleNode("level");
-                            }
-                            continue;
-                        case "Construction":
-                            nodeMap.skillConstruction = skillNode.SelectSingleNode("level");
-                            if (nodeMap.skillConstruction == null)
-                            {
-                                FixSkillNode(skillNode);
-                                nodeMap.skillConstruction = skillNode.SelectSingleNode("level");
-                            }
-                            continue;
-                        case "Cooking":
-                            nodeMap.skillCooking = skillNode.SelectSingleNode("level");
-                            if (nodeMap.skillCooking == null)
-                            {
-                                FixSkillNode(skillNode);
-                                nodeMap.skillCooking = skillNode.SelectSingleNode("level");
-                            }
-                            continue;
-                        case "Crafting":
-                            nodeMap.skillCrafting = skillNode.SelectSingleNode("level");
-                            if (nodeMap.skillCrafting == null)
-                            {
-                                FixSkillNode(skillNode);
-                                nodeMap.skillCrafting = skillNode.SelectSingleNode("level");
-                            }
-                            continue;
-                        case "Growing":
-                            nodeMap.skillGrowing = skillNode.SelectSingleNode("level");
-                            if (nodeMap.skillGrowing == null)
-                            {
-                                FixSkillNode(skillNode);
-                                nodeMap.skillGrowing = skillNode.SelectSingleNode("level");
-                            }
-                            continue;
-                        case "Medicine":
-                            nodeMap.skillMedicine = skillNode.SelectSingleNode("level");
-                            if (nodeMap.skillMedicine == null)
-                            {
-                                FixSkillNode(skillNode);
-                                nodeMap.skillMedicine = skillNode.SelectSingleNode("level");
-                            }
-                            continue;
-                        case "Melee":
-                            nodeMap.skillMelee = skillNode.SelectSingleNode("level");
-                            if (nodeMap.skillMelee == null)
-                            {
-                                FixSkillNode(skillNode);
-                                nodeMap.skillMelee = skillNode.SelectSingleNode("level");
-                            }
-                            continue;
-                        case "Mining":
-                            nodeMap.skillMining = skillNode.SelectSingleNode("level");
-                            if (nodeMap.skillMining == null)
-                            {
-                                FixSkillNode(skillNode);
-                                nodeMap.skillMining = skillNode.SelectSingleNode("level");
-                            }
-                            continue;
-                        case "Research":
-                            nodeMap.skillResearch = skillNode.SelectSingleNode("level");
-                            continue;
-                        case "Shooting":
-                            nodeMap.skillShooting = skillNode.SelectSingleNode("level");
-                            if (nodeMap.skillShooting == null)
-                            {
-                                FixSkillNode(skillNode);
-                                nodeMap.skillShooting = skillNode.SelectSingleNode("level");
-                            }
-                            continue;
-                        case "Social":
-                            nodeMap.skillSocial = skillNode.SelectSingleNode("level");
-                            if (nodeMap.skillSocial == null)
-                            {
-                                FixSkillNode(skillNode);
-                                nodeMap.skillSocial = skillNode.SelectSingleNode("level");
-                            }
-                            continue;
+                        XmlElement nreFix = saveFile.CreateElement("level");
+                        nreFix.InnerText = "0";
+                        skillNode.AppendChild(nreFix);
+                        skillLevel = skillNode.SelectSingleNode("level");
                     }
-                } //End inner foreach loop
-                nodeMap.Init();
-                nodeMapList.Add(nodeMap);
-            }//End outer foreach loop
-            return nodeMapList;
+                    //add Skill to list
+                    skillNodesList.Add(skillName, skillLevel);
+                    
+                    //While we're already at the skill check for a passion node
+                    XmlNode passionNode = skillNode.SelectSingleNode("passion");
+                    if (passionNode != null) { passionNodesList.Add(skillName, passionNode); }
+                }
+                //After loop add lists to pawn
+                workingPawnNode.skillNodes = skillNodesList;
+                workingPawnNode.passionNodes = passionNodesList;
+
+                //Add pawn to the list of pawns
+                pawnNodeList.Add(workingPawnNode);
+            }
+            //Add pawn list to nodeMap
+            nodeMap.pawnNodeList = pawnNodeList;
+            return nodeMap;
         }
 
 
