@@ -88,17 +88,31 @@ namespace RimWorldSaveEditor
             int index = box.SelectedIndex;
             PawnNodeMap nodeMap = nodeMapList[index];
 
-            artisticBox.Text = nodeMap.skillArtistic.InnerText;
-            constructionBox.Text = nodeMap.skillConstruction.InnerText;
-            cookingBox.Text = nodeMap.skillCooking.InnerText;
-            craftingBox.Text = nodeMap.skillCrafting.InnerText;
-            growingBox.Text = nodeMap.skillGrowing.InnerText;
-            medicineBox.Text = nodeMap.skillMedicine.InnerText;
-            meleeBox.Text = nodeMap.skillMelee.InnerText;
-            miningBox.Text = nodeMap.skillMining.InnerText;
-            researchBox.Text = nodeMap.skillResearch.InnerText;
-            shootingBox.Text = nodeMap.skillShooting.InnerText;
-            socialBox.Text = nodeMap.skillSocial.InnerText;
+            if (nodeMap.skillArtistic != null) { artisticBox.Text = nodeMap.skillArtistic.InnerText; }
+            else { artisticBox.Text = "0"; }
+
+            if (nodeMap.skillConstruction != null) { constructionBox.Text = nodeMap.skillConstruction.InnerText; }
+            else { artisticBox.Text = "0"; }
+
+            if (nodeMap.skillCooking != null) { cookingBox.Text = nodeMap.skillCooking.InnerText; }
+            else { artisticBox.Text = "0"; }
+
+            if (nodeMap.skillCrafting != null) { craftingBox.Text = nodeMap.skillCrafting.InnerText; }
+
+            if (nodeMap.skillGrowing != null) { growingBox.Text = nodeMap.skillGrowing.InnerText; }
+
+            if (nodeMap.skillMedicine != null) { medicineBox.Text = nodeMap.skillMedicine.InnerText; }
+
+            if (nodeMap.skillMelee != null) { meleeBox.Text = nodeMap.skillMelee.InnerText; }
+
+            if (nodeMap.skillMining != null) { miningBox.Text = nodeMap.skillMining.InnerText; }
+
+            if (nodeMap.skillResearch != null) { researchBox.Text = nodeMap.skillResearch.InnerText; }
+
+            if (nodeMap.skillShooting != null) { shootingBox.Text = nodeMap.skillShooting.InnerText; }
+            
+            if (nodeMap.skillSocial != null ) { socialBox.Text = nodeMap.skillSocial.InnerText; }
+            
             healthBox.Text = nodeMap.pawnHealth.InnerText;
         }
 
@@ -189,6 +203,7 @@ namespace RimWorldSaveEditor
                 return;
             }
             PawnNodeMap nodeMap = nodeMapList[colonistListBox.SelectedIndex];
+            if(nodeMap.skillResearch == null)
             handler.ModifyNode(nodeMap.skillResearch, researchBox.Text);
         }
 

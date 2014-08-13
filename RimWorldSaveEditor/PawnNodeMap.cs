@@ -26,6 +26,7 @@ namespace RimWorldSaveEditor
         public XmlNode nameFirst { get; set; }
         public XmlNode nameNick { get; set; }
         public XmlNode nameLast { get; set; }
+        List<XmlNode> allSkillNodes { get; set; }
         public string fullName { get; set; }
 
         public string getFullName()

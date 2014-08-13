@@ -63,36 +63,86 @@ namespace RimWorldSaveEditor
                     {
                         case "Artistic":
                             nodeMap.skillArtistic = skillNode.SelectSingleNode("level");
+                            if (nodeMap.skillArtistic == null)
+                            {
+                                FixSkillNode(skillNode);
+                                nodeMap.skillArtistic = skillNode.SelectSingleNode("level");
+                            }
                             continue;
                         case "Construction":
                             nodeMap.skillConstruction = skillNode.SelectSingleNode("level");
+                            if (nodeMap.skillConstruction == null)
+                            {
+                                FixSkillNode(skillNode);
+                                nodeMap.skillConstruction = skillNode.SelectSingleNode("level");
+                            }
                             continue;
                         case "Cooking":
                             nodeMap.skillCooking = skillNode.SelectSingleNode("level");
+                            if (nodeMap.skillCooking == null)
+                            {
+                                FixSkillNode(skillNode);
+                                nodeMap.skillCooking = skillNode.SelectSingleNode("level");
+                            }
                             continue;
                         case "Crafting":
                             nodeMap.skillCrafting = skillNode.SelectSingleNode("level");
+                            if (nodeMap.skillCrafting == null)
+                            {
+                                FixSkillNode(skillNode);
+                                nodeMap.skillCrafting = skillNode.SelectSingleNode("level");
+                            }
                             continue;
                         case "Growing":
                             nodeMap.skillGrowing = skillNode.SelectSingleNode("level");
+                            if (nodeMap.skillGrowing == null)
+                            {
+                                FixSkillNode(skillNode);
+                                nodeMap.skillGrowing = skillNode.SelectSingleNode("level");
+                            }
                             continue;
                         case "Medicine":
                             nodeMap.skillMedicine = skillNode.SelectSingleNode("level");
+                            if (nodeMap.skillMedicine == null)
+                            {
+                                FixSkillNode(skillNode);
+                                nodeMap.skillMedicine = skillNode.SelectSingleNode("level");
+                            }
                             continue;
                         case "Melee":
                             nodeMap.skillMelee = skillNode.SelectSingleNode("level");
+                            if (nodeMap.skillMelee == null)
+                            {
+                                FixSkillNode(skillNode);
+                                nodeMap.skillMelee = skillNode.SelectSingleNode("level");
+                            }
                             continue;
                         case "Mining":
                             nodeMap.skillMining = skillNode.SelectSingleNode("level");
+                            if (nodeMap.skillMining == null)
+                            {
+                                FixSkillNode(skillNode);
+                                nodeMap.skillMining = skillNode.SelectSingleNode("level");
+                            }
                             continue;
                         case "Research":
                             nodeMap.skillResearch = skillNode.SelectSingleNode("level");
                             continue;
                         case "Shooting":
                             nodeMap.skillShooting = skillNode.SelectSingleNode("level");
+                            if (nodeMap.skillShooting == null)
+                            {
+                                FixSkillNode(skillNode);
+                                nodeMap.skillShooting = skillNode.SelectSingleNode("level");
+                            }
                             continue;
                         case "Social":
                             nodeMap.skillSocial = skillNode.SelectSingleNode("level");
+                            if (nodeMap.skillSocial == null)
+                            {
+                                FixSkillNode(skillNode);
+                                nodeMap.skillSocial = skillNode.SelectSingleNode("level");
+                            }
                             continue;
                     }
                 } //End inner foreach loop
@@ -107,6 +157,14 @@ namespace RimWorldSaveEditor
         public void ModifyNode(XmlNode node, string value)
         {
             node.InnerText = value;
+        }
+
+
+        public void FixSkillNode(XmlNode skillNode)
+        {
+            XmlElement levelElement = saveFile.CreateElement("level");
+            levelElement.InnerText = "0";
+            skillNode.AppendChild(levelElement);
         }
 
         //Toggle backup enable
