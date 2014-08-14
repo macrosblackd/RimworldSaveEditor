@@ -107,9 +107,9 @@ namespace RimWorldSaveEditor
                     //add Skill to list
                     skillNodesList.Add(skillName, skillLevel);
                     
-                    //While we're already at the skill check for a passion node
+                    //While we're already at the skill grab the passion node
                     XmlNode passionNode = skillNode.SelectSingleNode("passion");
-                    if (passionNode != null) { passionNodesList.Add(skillName, passionNode); }
+                    passionNodesList.Add(skillName, passionNode);
                 }
                 //After loop add lists to pawn
                 workingPawnNode.skillNodes = skillNodesList;
@@ -128,6 +128,22 @@ namespace RimWorldSaveEditor
         public void ModifyNode(XmlNode node, string value)
         {
             node.InnerText = value;
+        }
+
+        public void MakePassionNode(XmlNode parent, string value)
+        {
+            XmlElement passionNode = saveFile.CreateElement("passion");
+            passionNode.InnerText = value;
+            parent.AppendChild(passionNode);
+            XmlNode retNode = parent.SelectSingleNode("passion");
+
+            
+        }
+
+        public void RemovePassionNode(XmlNode parent)
+        {
+            XmlNode removeNode = parent.SelectSingleNode("passion");
+            parent.RemoveChild(removeNode);
         }
 
 
