@@ -1,4 +1,5 @@
-﻿namespace RimWorldSaveEditor
+﻿using RimWorldSaveEditor.Properties;
+namespace RimWorldSaveEditor
 {
     partial class Form1
     {
@@ -30,13 +31,28 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.updateBox = new System.Windows.Forms.CheckBox();
+            this.removeThoughtButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.thoughtBox = new System.Windows.Forms.ListBox();
             this.label12 = new System.Windows.Forms.Label();
             this.healthBox = new System.Windows.Forms.TextBox();
             this.backupCheck = new System.Windows.Forms.CheckBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.openFileButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.socialPassion = new System.Windows.Forms.ComboBox();
+            this.shootingPassion = new System.Windows.Forms.ComboBox();
+            this.researchPassion = new System.Windows.Forms.ComboBox();
+            this.miningPassion = new System.Windows.Forms.ComboBox();
+            this.meleePassion = new System.Windows.Forms.ComboBox();
+            this.medicinePassion = new System.Windows.Forms.ComboBox();
+            this.growingPassion = new System.Windows.Forms.ComboBox();
+            this.craftingPassion = new System.Windows.Forms.ComboBox();
+            this.cookingPassion = new System.Windows.Forms.ComboBox();
+            this.constructionPassion = new System.Windows.Forms.ComboBox();
+            this.artisticPassion = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -61,17 +77,8 @@
             this.artisticBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.colonistListBox = new System.Windows.Forms.ListBox();
-            this.artisticPassion = new System.Windows.Forms.ComboBox();
-            this.constructionPassion = new System.Windows.Forms.ComboBox();
-            this.cookingPassion = new System.Windows.Forms.ComboBox();
-            this.craftingPassion = new System.Windows.Forms.ComboBox();
-            this.growingPassion = new System.Windows.Forms.ComboBox();
-            this.medicinePassion = new System.Windows.Forms.ComboBox();
-            this.meleePassion = new System.Windows.Forms.ComboBox();
-            this.miningPassion = new System.Windows.Forms.ComboBox();
-            this.researchPassion = new System.Windows.Forms.ComboBox();
-            this.shootingPassion = new System.Windows.Forms.ComboBox();
-            this.socialPassion = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -85,12 +92,16 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(518, 401);
+            this.tabControl1.Size = new System.Drawing.Size(535, 401);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.label15);
+            this.tabPage1.Controls.Add(this.label14);
+            this.tabPage1.Controls.Add(this.updateBox);
+            this.tabPage1.Controls.Add(this.removeThoughtButton);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.backupCheck);
             this.tabPage1.Controls.Add(this.saveButton);
@@ -100,20 +111,61 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(510, 375);
+            this.tabPage1.Size = new System.Drawing.Size(527, 375);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Colonist";
             // 
+            // updateBox
+            // 
+            this.updateBox.AutoSize = true;
+            this.updateBox.Checked = global::RimWorldSaveEditor.Properties.Settings.Default.updateCheckEnabled;
+            this.updateBox.Location = new System.Drawing.Point(210, 327);
+            this.updateBox.Name = "updateBox";
+            this.updateBox.Size = new System.Drawing.Size(115, 17);
+            this.updateBox.TabIndex = 8;
+            this.updateBox.Text = "Check for Updates";
+            this.updateBox.UseVisualStyleBackColor = true;
+            this.updateBox.CheckedChanged += new System.EventHandler(this.updateBox_CheckedChanged);
+            // 
+            // removeThoughtButton
+            // 
+            this.removeThoughtButton.Location = new System.Drawing.Point(388, 323);
+            this.removeThoughtButton.Name = "removeThoughtButton";
+            this.removeThoughtButton.Size = new System.Drawing.Size(100, 23);
+            this.removeThoughtButton.TabIndex = 7;
+            this.removeThoughtButton.Text = "Remove Thought";
+            this.removeThoughtButton.UseVisualStyleBackColor = true;
+            this.removeThoughtButton.Click += new System.EventHandler(this.removeThoughtButton_Click);
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.thoughtBox);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.healthBox);
-            this.groupBox3.Location = new System.Drawing.Point(400, 6);
+            this.groupBox3.Location = new System.Drawing.Point(353, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(104, 51);
+            this.groupBox3.Size = new System.Drawing.Size(168, 311);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Other";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(59, 45);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(52, 13);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Thoughts";
+            // 
+            // thoughtBox
+            // 
+            this.thoughtBox.FormattingEnabled = true;
+            this.thoughtBox.Location = new System.Drawing.Point(14, 65);
+            this.thoughtBox.Name = "thoughtBox";
+            this.thoughtBox.Size = new System.Drawing.Size(148, 225);
+            this.thoughtBox.TabIndex = 2;
             // 
             // label12
             // 
@@ -138,7 +190,7 @@
             this.backupCheck.AutoSize = true;
             this.backupCheck.Checked = true;
             this.backupCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.backupCheck.Location = new System.Drawing.Point(178, 327);
+            this.backupCheck.Location = new System.Drawing.Point(19, 352);
             this.backupCheck.Name = "backupCheck";
             this.backupCheck.Size = new System.Drawing.Size(99, 17);
             this.backupCheck.TabIndex = 4;
@@ -207,6 +259,139 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Skills";
+            // 
+            // socialPassion
+            // 
+            this.socialPassion.FormattingEnabled = true;
+            this.socialPassion.Items.AddRange(new object[] {
+            "None",
+            "Major",
+            "Minor"});
+            this.socialPassion.Location = new System.Drawing.Point(126, 279);
+            this.socialPassion.Name = "socialPassion";
+            this.socialPassion.Size = new System.Drawing.Size(56, 21);
+            this.socialPassion.TabIndex = 32;
+            // 
+            // shootingPassion
+            // 
+            this.shootingPassion.FormattingEnabled = true;
+            this.shootingPassion.Items.AddRange(new object[] {
+            "None",
+            "Major",
+            "Minor"});
+            this.shootingPassion.Location = new System.Drawing.Point(126, 253);
+            this.shootingPassion.Name = "shootingPassion";
+            this.shootingPassion.Size = new System.Drawing.Size(56, 21);
+            this.shootingPassion.TabIndex = 31;
+            // 
+            // researchPassion
+            // 
+            this.researchPassion.FormattingEnabled = true;
+            this.researchPassion.Items.AddRange(new object[] {
+            "None",
+            "Major",
+            "Minor"});
+            this.researchPassion.Location = new System.Drawing.Point(126, 227);
+            this.researchPassion.Name = "researchPassion";
+            this.researchPassion.Size = new System.Drawing.Size(56, 21);
+            this.researchPassion.TabIndex = 30;
+            // 
+            // miningPassion
+            // 
+            this.miningPassion.FormattingEnabled = true;
+            this.miningPassion.Items.AddRange(new object[] {
+            "None",
+            "Major",
+            "Minor"});
+            this.miningPassion.Location = new System.Drawing.Point(126, 201);
+            this.miningPassion.Name = "miningPassion";
+            this.miningPassion.Size = new System.Drawing.Size(56, 21);
+            this.miningPassion.TabIndex = 29;
+            // 
+            // meleePassion
+            // 
+            this.meleePassion.FormattingEnabled = true;
+            this.meleePassion.Items.AddRange(new object[] {
+            "None",
+            "Major",
+            "Minor"});
+            this.meleePassion.Location = new System.Drawing.Point(126, 175);
+            this.meleePassion.Name = "meleePassion";
+            this.meleePassion.Size = new System.Drawing.Size(56, 21);
+            this.meleePassion.TabIndex = 28;
+            // 
+            // medicinePassion
+            // 
+            this.medicinePassion.FormattingEnabled = true;
+            this.medicinePassion.Items.AddRange(new object[] {
+            "None",
+            "Major",
+            "Minor"});
+            this.medicinePassion.Location = new System.Drawing.Point(126, 149);
+            this.medicinePassion.Name = "medicinePassion";
+            this.medicinePassion.Size = new System.Drawing.Size(56, 21);
+            this.medicinePassion.TabIndex = 27;
+            // 
+            // growingPassion
+            // 
+            this.growingPassion.FormattingEnabled = true;
+            this.growingPassion.Items.AddRange(new object[] {
+            "None",
+            "Major",
+            "Minor"});
+            this.growingPassion.Location = new System.Drawing.Point(126, 123);
+            this.growingPassion.Name = "growingPassion";
+            this.growingPassion.Size = new System.Drawing.Size(56, 21);
+            this.growingPassion.TabIndex = 26;
+            // 
+            // craftingPassion
+            // 
+            this.craftingPassion.FormattingEnabled = true;
+            this.craftingPassion.Items.AddRange(new object[] {
+            "None",
+            "Major",
+            "Minor"});
+            this.craftingPassion.Location = new System.Drawing.Point(126, 97);
+            this.craftingPassion.Name = "craftingPassion";
+            this.craftingPassion.Size = new System.Drawing.Size(56, 21);
+            this.craftingPassion.TabIndex = 25;
+            // 
+            // cookingPassion
+            // 
+            this.cookingPassion.FormattingEnabled = true;
+            this.cookingPassion.Items.AddRange(new object[] {
+            "None",
+            "Major",
+            "Minor"});
+            this.cookingPassion.Location = new System.Drawing.Point(126, 71);
+            this.cookingPassion.Name = "cookingPassion";
+            this.cookingPassion.Size = new System.Drawing.Size(56, 21);
+            this.cookingPassion.TabIndex = 24;
+            // 
+            // constructionPassion
+            // 
+            this.constructionPassion.FormattingEnabled = true;
+            this.constructionPassion.Items.AddRange(new object[] {
+            "None",
+            "Major",
+            "Minor"});
+            this.constructionPassion.Location = new System.Drawing.Point(126, 45);
+            this.constructionPassion.Name = "constructionPassion";
+            this.constructionPassion.Size = new System.Drawing.Size(56, 21);
+            this.constructionPassion.TabIndex = 23;
+            // 
+            // artisticPassion
+            // 
+            this.artisticPassion.DisplayMember = "passionValues";
+            this.artisticPassion.FormattingEnabled = true;
+            this.artisticPassion.Items.AddRange(new object[] {
+            "None",
+            "Major",
+            "Minor"});
+            this.artisticPassion.Location = new System.Drawing.Point(126, 19);
+            this.artisticPassion.Name = "artisticPassion";
+            this.artisticPassion.Size = new System.Drawing.Size(56, 21);
+            this.artisticPassion.TabIndex = 22;
             // 
             // label11
             // 
@@ -403,144 +588,29 @@
             this.colonistListBox.TabIndex = 0;
             this.colonistListBox.SelectedIndexChanged += new System.EventHandler(this.colonistListBox_SelectedIndexChanged);
             // 
-            // artisticPassion
+            // label14
             // 
-            this.artisticPassion.DisplayMember = "passionValues";
-            this.artisticPassion.FormattingEnabled = true;
-            this.artisticPassion.Items.AddRange(new object[] {
-            "None",
-            "Major",
-            "Minor"});
-            this.artisticPassion.Location = new System.Drawing.Point(126, 19);
-            this.artisticPassion.Name = "artisticPassion";
-            this.artisticPassion.Size = new System.Drawing.Size(56, 21);
-            this.artisticPassion.TabIndex = 22;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(213, 347);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(302, 13);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "Warning: removing thoughts may have unintended side-effects";
             // 
-            // constructionPassion
+            // label15
             // 
-            this.constructionPassion.FormattingEnabled = true;
-            this.constructionPassion.Items.AddRange(new object[] {
-            "None",
-            "Major",
-            "Minor"});
-            this.constructionPassion.Location = new System.Drawing.Point(126, 45);
-            this.constructionPassion.Name = "constructionPassion";
-            this.constructionPassion.Size = new System.Drawing.Size(56, 21);
-            this.constructionPassion.TabIndex = 23;
-            // 
-            // cookingPassion
-            // 
-            this.cookingPassion.FormattingEnabled = true;
-            this.cookingPassion.Items.AddRange(new object[] {
-            "None",
-            "Major",
-            "Minor"});
-            this.cookingPassion.Location = new System.Drawing.Point(126, 71);
-            this.cookingPassion.Name = "cookingPassion";
-            this.cookingPassion.Size = new System.Drawing.Size(56, 21);
-            this.cookingPassion.TabIndex = 24;
-            // 
-            // craftingPassion
-            // 
-            this.craftingPassion.FormattingEnabled = true;
-            this.craftingPassion.Items.AddRange(new object[] {
-            "None",
-            "Major",
-            "Minor"});
-            this.craftingPassion.Location = new System.Drawing.Point(126, 97);
-            this.craftingPassion.Name = "craftingPassion";
-            this.craftingPassion.Size = new System.Drawing.Size(56, 21);
-            this.craftingPassion.TabIndex = 25;
-            // 
-            // growingPassion
-            // 
-            this.growingPassion.FormattingEnabled = true;
-            this.growingPassion.Items.AddRange(new object[] {
-            "None",
-            "Major",
-            "Minor"});
-            this.growingPassion.Location = new System.Drawing.Point(126, 123);
-            this.growingPassion.Name = "growingPassion";
-            this.growingPassion.Size = new System.Drawing.Size(56, 21);
-            this.growingPassion.TabIndex = 26;
-            // 
-            // medicinePassion
-            // 
-            this.medicinePassion.FormattingEnabled = true;
-            this.medicinePassion.Items.AddRange(new object[] {
-            "None",
-            "Major",
-            "Minor"});
-            this.medicinePassion.Location = new System.Drawing.Point(126, 149);
-            this.medicinePassion.Name = "medicinePassion";
-            this.medicinePassion.Size = new System.Drawing.Size(56, 21);
-            this.medicinePassion.TabIndex = 27;
-            // 
-            // meleePassion
-            // 
-            this.meleePassion.FormattingEnabled = true;
-            this.meleePassion.Items.AddRange(new object[] {
-            "None",
-            "Major",
-            "Minor"});
-            this.meleePassion.Location = new System.Drawing.Point(126, 175);
-            this.meleePassion.Name = "meleePassion";
-            this.meleePassion.Size = new System.Drawing.Size(56, 21);
-            this.meleePassion.TabIndex = 28;
-            // 
-            // miningPassion
-            // 
-            this.miningPassion.FormattingEnabled = true;
-            this.miningPassion.Items.AddRange(new object[] {
-            "None",
-            "Major",
-            "Minor"});
-            this.miningPassion.Location = new System.Drawing.Point(126, 201);
-            this.miningPassion.Name = "miningPassion";
-            this.miningPassion.Size = new System.Drawing.Size(56, 21);
-            this.miningPassion.TabIndex = 29;
-            // 
-            // researchPassion
-            // 
-            this.researchPassion.FormattingEnabled = true;
-            this.researchPassion.Items.AddRange(new object[] {
-            "None",
-            "Major",
-            "Minor"});
-            this.researchPassion.Location = new System.Drawing.Point(126, 227);
-            this.researchPassion.Name = "researchPassion";
-            this.researchPassion.Size = new System.Drawing.Size(56, 21);
-            this.researchPassion.TabIndex = 30;
-            // 
-            // shootingPassion
-            // 
-            this.shootingPassion.FormattingEnabled = true;
-            this.shootingPassion.Items.AddRange(new object[] {
-            "None",
-            "Major",
-            "Minor"});
-            this.shootingPassion.Location = new System.Drawing.Point(126, 253);
-            this.shootingPassion.Name = "shootingPassion";
-            this.shootingPassion.Size = new System.Drawing.Size(56, 21);
-            this.shootingPassion.TabIndex = 31;
-            // 
-            // socialPassion
-            // 
-            this.socialPassion.FormattingEnabled = true;
-            this.socialPassion.Items.AddRange(new object[] {
-            "None",
-            "Major",
-            "Minor"});
-            this.socialPassion.Location = new System.Drawing.Point(126, 279);
-            this.socialPassion.Name = "socialPassion";
-            this.socialPassion.Size = new System.Drawing.Size(56, 21);
-            this.socialPassion.TabIndex = 32;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(279, 360);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(138, 13);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "USE AT YOUR OWN RISK";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 425);
+            this.ClientSize = new System.Drawing.Size(559, 424);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -602,6 +672,12 @@
         private System.Windows.Forms.ComboBox cookingPassion;
         private System.Windows.Forms.ComboBox constructionPassion;
         private System.Windows.Forms.ComboBox artisticPassion;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ListBox thoughtBox;
+        private System.Windows.Forms.Button removeThoughtButton;
+        private System.Windows.Forms.CheckBox updateBox;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }
 

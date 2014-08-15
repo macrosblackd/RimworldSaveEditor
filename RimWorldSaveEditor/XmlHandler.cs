@@ -111,15 +111,31 @@ namespace RimWorldSaveEditor
                     XmlNode passionNode = skillNode.SelectSingleNode("passion");
                     passionNodesList.Add(skillName, passionNode);
                 }
+                //End Skill loop
                 //After loop add lists to pawn
                 workingPawnNode.skillNodes = skillNodesList;
                 workingPawnNode.passionNodes = passionNodesList;
 
-                //Add pawn to the list of pawns
+                //Start Thought Loop
+                SortedList<string, XmlNode> thoughtNodeList = new SortedList<string, XmlNode>();
+                XmlNodeList topLevelThoughts = pawnNode.SelectNodes("psychology/thoughts/thoughts/li");
+
+                foreach(XmlNode thoughtNode in topLevelThoughts)
+                {
+                    string name = thoughtNode.SelectSingleNode("def").InnerText + ":" + thoughtNode.SelectSingleNode("age").InnerText;
+                    thoughtNodeList.Add(name, thoughtNode);
+                }
+                //add thoughts to pawn
+                workingPawnNode.thoughtNodes = thoughtNodeList;
+                //add this pawn to master list as we're done with it
                 pawnNodeList.Add(workingPawnNode);
             }
             //Add pawn list to nodeMap
             nodeMap.pawnNodeList = pawnNodeList;
+            
+            
+            
+            
             return nodeMap;
         }
 
@@ -164,7 +180,7 @@ namespace RimWorldSaveEditor
         //Backup
         public string Backup()
         {
-            String backupFile = fileDir + "\\Backup\\" + Path.GetFileNameWithoutExtension(filePath) + "_" + DateTime.Now.ToString("dd-MM-yyyy_hh-mm-ss") + "-backup.rim";
+            String backupFile = fileDir + "\\Backup\\" + Path.GetFileNameWithoutExtension(filePath) + "_" + DateTime.Now.ToString("dd-MM-yyyy_hh-mm-ss") + "-backup.rwm";
             String backupDir = fileDir + "\\Backup\\";
             if(!Directory.Exists(backupDir))
             {

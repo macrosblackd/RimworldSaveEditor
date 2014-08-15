@@ -34,5 +34,17 @@ namespace RimWorldSaveEditor.Properties {
                 this["lastUsedPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool updateCheckEnabled {
+            get {
+                return ((bool)(this["updateCheckEnabled"]));
+            }
+            set {
+                this["updateCheckEnabled"] = value;
+            }
+        }
     }
 }

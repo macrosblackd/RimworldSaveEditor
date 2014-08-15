@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -16,16 +17,22 @@ namespace RimWorldSaveEditor
     public partial class Form1 : Form
     {
 
-        //Need access to XmlHandler and List<PawnNodeMap> globally in class
+        //Need access to XmlHandler and NodeMap globally in class
+        string releaseThreadUrl = "http://ludeon.com/forums/index.php?topic=5346.0";
+        string versionCheckUrl = "http://pastebin.com/raw.php?i=3LvpsTWB";
+        string currentVersion;
+
         XmlHandler handler;
         NodeMap nodeMap;
-
+        
         SortedList<string, TextBox> textBoxes;
         Dictionary<TextBox, string> textBoxesReverse;
-
         SortedList<string, ComboBox> comboBoxes;
         Dictionary<ComboBox, string> comboBoxesReverse;
-        bool toggleOnce;
+        //ThoughtDefDumper tDefDumper;
+
+        bool toggleOnce,updateChecked;
+        //bool defsLoaded;
 
         //Will need to null check colony name
         public Form1()
@@ -33,11 +40,48 @@ namespace RimWorldSaveEditor
             InitializeComponent();
             Version asmVersion = Assembly.GetExecutingAssembly().GetName().Version;
             string version = String.Format("{0}.{1}.{2}", asmVersion.Major, asmVersion.Minor, asmVersion.Build);
+            currentVersion = String.Format(version + ".{0}", asmVersion.Revision);
             this.Text = String.Format("RimWorld Save Editor Version: {0}", version);
             PopulateControlLists();
             AssignEventHandler(this);
             ToggleControls();
+            if (Settings.Default.updateCheckEnabled) { CheckUpdate(); }
+        }
 
+        public void CheckUpdate()
+        {
+            using (var WebClient = new WebClient())
+            {
+                string updateVersion = WebClient.DownloadString(versionCheckUrl);
+                updateChecked = true;
+                
+                if (CompareVersions(updateVersion) == 1)
+                {
+                    if (MessageBox.Show("New version available, Goto release thread?", "Open Thread?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start(releaseThreadUrl);
+                        Application.Exit();
+                        Environment.Exit(0);
+                    }
+                    else { return; }
+                }
+                else { return; }
+            }
+        }
+
+        public int CompareVersions(string stringFromNet)
+        {
+            string[] asmStyleParse = stringFromNet.Split('.');
+            string[] currentVerParse = currentVersion.Split('.');
+
+            for(int i = 0; i < asmStyleParse.Count(); i++)
+            {
+                if (Convert.ToInt32(asmStyleParse[i]) > Convert.ToInt32(currentVerParse[i])) 
+                {
+                    return 1;
+                }
+            }
+            return 0;
         }
 
         public void AssignEventHandler(Control control)
@@ -147,42 +191,16 @@ namespace RimWorldSaveEditor
 
         private void colonistListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (handler == null)
-            {
-                return;
-            }
-            ListBox box = (ListBox)sender;
-            int index = box.SelectedIndex;
+            //Don't do anything if a save hasn't been loaded
+            if (handler == null) { return; }
 
-            //populate skill levels and health
-            SortedList<string, XmlNode> skillNodes = nodeMap.pawnNodeList[index].skillNodes;
-            foreach (string key in textBoxes.Keys)
-            {
-                textBoxes[key].Text = skillNodes[key].InnerText;
-            }
-            healthBox.Text = nodeMap.pawnNodeList[index].pawnHealth.InnerText;
+            //populate Relevant sections
+            healthBox.Text = GetSelectedPawn().pawnHealth.InnerText;
+            RefreshSkills();
+            RefreshPassions();
+            RefreshThoughts();
 
-            //populate passions
-            SortedList<string, XmlNode> passionNodes = nodeMap.pawnNodeList[index].passionNodes;
-            foreach (string key in comboBoxes.Keys)
-            {
-                if (passionNodes[key] == null || passionNodes[key].InnerText == null)
-                {
-                    if (comboBoxes[key].SelectedText != null)
-                    {
-                        comboBoxes[key].ResetText();
-                    }
-                    comboBoxes[key].SelectedText = "None";
-                }
-                else
-                {
-                    if (comboBoxes[key].SelectedText != null)
-                    {
-                        comboBoxes[key].ResetText();
-                    }
-                    comboBoxes[key].SelectedText = passionNodes[key].InnerText;
-                }
-            }
+
         }
 
         private void healthBox_TextChanged(object sender, EventArgs e)
@@ -197,20 +215,18 @@ namespace RimWorldSaveEditor
 
         private void ToggleControls()
         {
-            backupCheck.Enabled = !backupCheck.Enabled;
+            foreach(string key in textBoxes.Keys)
+            {
+                textBoxes[key].Enabled = !textBoxes[key].Enabled;
+            }
+            foreach(string key in comboBoxes.Keys)
+            {
+                comboBoxes[key].Enabled = !comboBoxes[key].Enabled;
+            }
             saveButton.Enabled = !saveButton.Enabled;
-            socialBox.Enabled = !socialBox.Enabled;
-            shootingBox.Enabled = !shootingBox.Enabled;
-            researchBox.Enabled = !researchBox.Enabled;
-            miningBox.Enabled = !miningBox.Enabled;
-            meleeBox.Enabled = !meleeBox.Enabled;
-            medicineBox.Enabled = !medicineBox.Enabled;
-            growingBox.Enabled = !growingBox.Enabled;
-            craftingBox.Enabled = !craftingBox.Enabled;
-            cookingBox.Enabled = !cookingBox.Enabled;
-            constructionBox.Enabled = !constructionBox.Enabled;
-            artisticBox.Enabled = !artisticBox.Enabled;
+            removeThoughtButton.Enabled = !removeThoughtButton.Enabled;
             healthBox.Enabled = !healthBox.Enabled;
+            backupCheck.Enabled = !backupCheck.Enabled;
         }
 
 
@@ -244,6 +260,66 @@ namespace RimWorldSaveEditor
             comboBoxes.Add("Shooting", shootingPassion);
             comboBoxes.Add("Social", socialPassion);
             comboBoxesReverse = comboBoxes.ToDictionary(x => x.Value, x => x.Key);
+        }
+
+        private void RefreshSkills()
+        {
+            foreach (string key in textBoxes.Keys)
+            {
+                textBoxes[key].Text = GetSelectedPawn().skillNodes[key].InnerText;
+            }
+
+        }
+
+        private void RefreshPassions()
+        {
+
+            foreach (string key in comboBoxes.Keys)
+            {
+                if (GetSelectedPawn().passionNodes[key] == null || GetSelectedPawn().passionNodes[key].InnerText == null)
+                {
+                    if (comboBoxes[key].SelectedText != null)
+                    {
+                        comboBoxes[key].ResetText();
+                    }
+                    comboBoxes[key].SelectedText = "None";
+                }
+                else
+                {
+                    if (comboBoxes[key].SelectedText != null)
+                    {
+                        comboBoxes[key].ResetText();
+                    }
+                    comboBoxes[key].SelectedText = GetSelectedPawn().passionNodes[key].InnerText;
+                }
+            }
+        }
+
+        private void RefreshThoughts()
+        {
+            thoughtBox.Items.Clear();
+            foreach (string defName in GetSelectedPawn().thoughtNodes.Keys)
+            {
+                thoughtBox.Items.Add(defName);
+            }
+        }
+
+        private void removeThoughtButton_Click(object sender, EventArgs e)
+        {
+            string key = thoughtBox.GetItemText(thoughtBox.SelectedItem);
+            GetSelectedPawn().thoughtNodes[key].ParentNode.RemoveChild(GetSelectedPawn().thoughtNodes[key]);
+            GetSelectedPawn().thoughtNodes.Remove(key);
+            RefreshThoughts();
+        }
+
+        private void updateBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.updateCheckEnabled = !Settings.Default.updateCheckEnabled;
+            Settings.Default.Save();
+            if(!updateChecked)
+            {
+                CheckUpdate();
+            }
         }
     }
 }

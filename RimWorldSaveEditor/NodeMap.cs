@@ -39,6 +39,7 @@ namespace RimWorldSaveEditor
             public string fullName { get; set; }
             //Health Node
             public XmlNode pawnHealth { get; set; }
+            public SortedList<string, XmlNode> thoughtNodes { get; set; }
 
             public void InitNames()
             {
