@@ -46,5 +46,29 @@ namespace RimWorldSaveEditor.Properties {
                 this["updateCheckEnabled"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string rimworldDir {
+            get {
+                return ((string)(this["rimworldDir"]));
+            }
+            set {
+                this["rimworldDir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool rimworldDirSet {
+            get {
+                return ((bool)(this["rimworldDirSet"]));
+            }
+            set {
+                this["rimworldDirSet"] = value;
+            }
+        }
     }
 }

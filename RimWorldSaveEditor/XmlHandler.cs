@@ -1,6 +1,7 @@
 ﻿using RimWorldSaveEditor.Properties;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,8 @@ namespace RimWorldSaveEditor
     class XmlHandler
     {
         List<string> debugList;
-        //document needs to be available to all class methods
-        string filePath;
-        string fileDir;
         XmlDocument saveFile;
+        string filePath,fileDir;
         bool backup;
 
 
@@ -46,7 +45,6 @@ namespace RimWorldSaveEditor
             //Populate research nodes
             XmlNodeList researchNames = saveFile.SelectNodes("map/researchManager/progress/keys");
             XmlNodeList researchValues = saveFile.SelectNodes("map/researchManager/progress/values");
-
             SortedList<string, XmlNode> researchNodes = new SortedList<string, XmlNode>();
             for (int i = 0; i < researchNames.Count; i++)
             {
@@ -56,20 +54,22 @@ namespace RimWorldSaveEditor
             }
             nodeMap.researchNodes = researchNodes;
 
-            //Get pawns by finding pawns in colonist faction
+            //Get pawns by finding pawns with "Colonist" kindDef
+            //was use "Colony" faction before but different languages save the innerText of this node in their language
             XmlNodeList pawnFactionNodes = saveFile.SelectNodes(Globals.XMLFINDPAWN);
             List<XmlNode> pawns = new List<XmlNode>();
             foreach (XmlNode pawnFactionNode in pawnFactionNodes)
             {
                 pawns.Add(pawnFactionNode.ParentNode);
             }
-
             List<NodeMap.PawnNode> pawnNodeList = new List<NodeMap.PawnNode>();
+            
             //populate colonist nodes
             foreach(XmlNode pawnNode in pawns)
             {
                 //new pawn node object
                 NodeMap.PawnNode workingPawnNode = new NodeMap.PawnNode();
+                workingPawnNode.pawn = pawnNode;
                
                 //get name nodes
                 XmlNode storyNode = pawnNode.SelectSingleNode("story");
@@ -82,15 +82,10 @@ namespace RimWorldSaveEditor
                 //get pawn health node
                 workingPawnNode.pawnHealth = pawnNode.SelectSingleNode("healthTracker/pawnHealth");
 
-                //Psychology to come later
-
-
-                
+                //loop for skills
                 XmlNodeList skillNodes = pawnNode.SelectNodes("skills/skills/li");
                 SortedList<string, XmlNode> skillNodesList = new SortedList<string, XmlNode>();
                 SortedList<String, XmlNode> passionNodesList = new SortedList<string, XmlNode>();
-
-                //loop for skills
                 foreach(XmlNode skillNode in skillNodes)
                 {
                     string skillName = skillNode.SelectSingleNode("def").InnerText;
@@ -119,7 +114,6 @@ namespace RimWorldSaveEditor
                 //Start Thought Loop
                 SortedList<string, XmlNode> thoughtNodeList = new SortedList<string, XmlNode>();
                 XmlNodeList topLevelThoughts = pawnNode.SelectNodes("psychology/thoughts/thoughts/li");
-
                 foreach(XmlNode thoughtNode in topLevelThoughts)
                 {
                     string name = thoughtNode.SelectSingleNode("def").InnerText + ":" + thoughtNode.SelectSingleNode("age").InnerText;
@@ -131,11 +125,7 @@ namespace RimWorldSaveEditor
                 pawnNodeList.Add(workingPawnNode);
             }
             //Add pawn list to nodeMap
-            nodeMap.pawnNodeList = pawnNodeList;
-            
-            
-            
-            
+            nodeMap.pawnNodeList = pawnNodeList;  
             return nodeMap;
         }
 
@@ -146,28 +136,20 @@ namespace RimWorldSaveEditor
             node.InnerText = value;
         }
 
+        //creates a new "passion" node if it was non-existant
         public void MakePassionNode(XmlNode parent, string value)
         {
             XmlElement passionNode = saveFile.CreateElement("passion");
             passionNode.InnerText = value;
             parent.AppendChild(passionNode);
             XmlNode retNode = parent.SelectSingleNode("passion");
-
-            
         }
 
+        //Removes passion node for passion being set to none
         public void RemovePassionNode(XmlNode parent)
         {
             XmlNode removeNode = parent.SelectSingleNode("passion");
             parent.RemoveChild(removeNode);
-        }
-
-
-        public void FixSkillNode(XmlNode skillNode)
-        {
-            XmlElement levelElement = saveFile.CreateElement("level");
-            levelElement.InnerText = "0";
-            skillNode.AppendChild(levelElement);
         }
 
         //Toggle backup enable
@@ -175,7 +157,6 @@ namespace RimWorldSaveEditor
         {
             backup = !backup;
         }
-
 
         //Backup
         public string Backup()
@@ -209,8 +190,36 @@ namespace RimWorldSaveEditor
             {
                 MessageBox.Show("Save successfully modified. No backup made per user selection");
             }
-
-            //Do popup box confirming changes saved
         }
+
+        public void AddThought(string thoughtName, XmlNode pawnNode)
+        {
+            
+            XmlNode thoughtTop = pawnNode.SelectSingleNode("psychology/thoughts/thoughts");
+            XmlElement li = saveFile.CreateElement("li");
+            li.SetAttribute("Class", "Thought");
+            XmlElement def = saveFile.CreateElement("def");
+            XmlElement age = saveFile.CreateElement("age");
+            def.InnerText = thoughtName;
+            age.InnerText = "0";
+            li.AppendChild(def);
+            li.AppendChild(age);
+            thoughtTop.AppendChild(li);
+        }
+
+        public SortedList<string,XmlNode> RepopThoughtsForPawn(XmlNode pNode)
+        {
+            XmlNodeList topLevelThoughts = pNode.SelectNodes("psychology/thoughts/thoughts/li");
+            SortedList<string, XmlNode> thoughtNodeList = new SortedList<string, XmlNode>();
+            foreach (XmlNode thoughtNode in topLevelThoughts)
+            {
+                string name = thoughtNode.SelectSingleNode("def").InnerText + ":" + thoughtNode.SelectSingleNode("age").InnerText;
+                thoughtNodeList.Add(name, thoughtNode);
+            }
+            return thoughtNodeList;
+        }
+
+
     }
+
 }

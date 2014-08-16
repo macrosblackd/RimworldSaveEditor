@@ -31,13 +31,17 @@ namespace RimWorldSaveEditor
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.updateBox = new System.Windows.Forms.CheckBox();
-            this.removeThoughtButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.thoughtBox = new System.Windows.Forms.ListBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.healthBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.addThoughtButton = new System.Windows.Forms.Button();
+            this.availableThoughtBox = new System.Windows.Forms.ComboBox();
+            this.thoughtBox = new System.Windows.Forms.ListBox();
+            this.removeThoughtButton = new System.Windows.Forms.Button();
             this.backupCheck = new System.Windows.Forms.CheckBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.openFileButton = new System.Windows.Forms.Button();
@@ -77,11 +81,11 @@ namespace RimWorldSaveEditor
             this.artisticBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.colonistListBox = new System.Windows.Forms.ListBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.dirChangeButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -92,16 +96,16 @@ namespace RimWorldSaveEditor
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(535, 401);
+            this.tabControl1.Size = new System.Drawing.Size(579, 437);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.dirChangeButton);
             this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.updateBox);
-            this.tabPage1.Controls.Add(this.removeThoughtButton);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.backupCheck);
             this.tabPage1.Controls.Add(this.saveButton);
@@ -111,15 +115,33 @@ namespace RimWorldSaveEditor
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(527, 375);
+            this.tabPage1.Size = new System.Drawing.Size(571, 411);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Colonist";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(325, 341);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(138, 13);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "USE AT YOUR OWN RISK";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(215, 328);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(349, 13);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "Warning: removing or adding thoughts may have unintended side-effects";
             // 
             // updateBox
             // 
             this.updateBox.AutoSize = true;
             this.updateBox.Checked = global::RimWorldSaveEditor.Properties.Settings.Default.updateCheckEnabled;
-            this.updateBox.Location = new System.Drawing.Point(210, 327);
+            this.updateBox.Location = new System.Drawing.Point(3, 352);
             this.updateBox.Name = "updateBox";
             this.updateBox.Size = new System.Drawing.Size(115, 17);
             this.updateBox.TabIndex = 8;
@@ -127,9 +149,80 @@ namespace RimWorldSaveEditor
             this.updateBox.UseVisualStyleBackColor = true;
             this.updateBox.CheckedChanged += new System.EventHandler(this.updateBox_CheckedChanged);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.groupBox4);
+            this.groupBox3.Controls.Add(this.addThoughtButton);
+            this.groupBox3.Controls.Add(this.availableThoughtBox);
+            this.groupBox3.Controls.Add(this.thoughtBox);
+            this.groupBox3.Controls.Add(this.removeThoughtButton);
+            this.groupBox3.Location = new System.Drawing.Point(353, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(211, 311);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Thoughts";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.healthBox);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Location = new System.Drawing.Point(0, 272);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(204, 38);
+            this.groupBox4.TabIndex = 13;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Health";
+            // 
+            // healthBox
+            // 
+            this.healthBox.Location = new System.Drawing.Point(6, 13);
+            this.healthBox.Name = "healthBox";
+            this.healthBox.Size = new System.Drawing.Size(47, 20);
+            this.healthBox.TabIndex = 0;
+            this.healthBox.Tag = "health";
+            this.healthBox.TextChanged += new System.EventHandler(this.healthBox_TextChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(59, 16);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(38, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Health";
+            // 
+            // addThoughtButton
+            // 
+            this.addThoughtButton.Location = new System.Drawing.Point(59, 241);
+            this.addThoughtButton.Name = "addThoughtButton";
+            this.addThoughtButton.Size = new System.Drawing.Size(100, 25);
+            this.addThoughtButton.TabIndex = 12;
+            this.addThoughtButton.Text = "Add Thought";
+            this.addThoughtButton.UseVisualStyleBackColor = true;
+            this.addThoughtButton.Click += new System.EventHandler(this.addThoughtButton_Click);
+            // 
+            // availableThoughtBox
+            // 
+            this.availableThoughtBox.FormattingEnabled = true;
+            this.availableThoughtBox.Location = new System.Drawing.Point(6, 214);
+            this.availableThoughtBox.Name = "availableThoughtBox";
+            this.availableThoughtBox.Size = new System.Drawing.Size(199, 21);
+            this.availableThoughtBox.Sorted = true;
+            this.availableThoughtBox.TabIndex = 11;
+            this.availableThoughtBox.Tag = "thoughts";
+            // 
+            // thoughtBox
+            // 
+            this.thoughtBox.FormattingEnabled = true;
+            this.thoughtBox.Location = new System.Drawing.Point(6, 19);
+            this.thoughtBox.Name = "thoughtBox";
+            this.thoughtBox.Size = new System.Drawing.Size(199, 160);
+            this.thoughtBox.TabIndex = 2;
+            // 
             // removeThoughtButton
             // 
-            this.removeThoughtButton.Location = new System.Drawing.Point(388, 323);
+            this.removeThoughtButton.Location = new System.Drawing.Point(59, 185);
             this.removeThoughtButton.Name = "removeThoughtButton";
             this.removeThoughtButton.Size = new System.Drawing.Size(100, 23);
             this.removeThoughtButton.TabIndex = 7;
@@ -137,60 +230,12 @@ namespace RimWorldSaveEditor
             this.removeThoughtButton.UseVisualStyleBackColor = true;
             this.removeThoughtButton.Click += new System.EventHandler(this.removeThoughtButton_Click);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.thoughtBox);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.healthBox);
-            this.groupBox3.Location = new System.Drawing.Point(353, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(168, 311);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Other";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(59, 45);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 13);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "Thoughts";
-            // 
-            // thoughtBox
-            // 
-            this.thoughtBox.FormattingEnabled = true;
-            this.thoughtBox.Location = new System.Drawing.Point(14, 65);
-            this.thoughtBox.Name = "thoughtBox";
-            this.thoughtBox.Size = new System.Drawing.Size(148, 225);
-            this.thoughtBox.TabIndex = 2;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(59, 22);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(38, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Health";
-            // 
-            // healthBox
-            // 
-            this.healthBox.Location = new System.Drawing.Point(6, 19);
-            this.healthBox.Name = "healthBox";
-            this.healthBox.Size = new System.Drawing.Size(47, 20);
-            this.healthBox.TabIndex = 0;
-            this.healthBox.Tag = "health";
-            this.healthBox.TextChanged += new System.EventHandler(this.healthBox_TextChanged);
-            // 
             // backupCheck
             // 
             this.backupCheck.AutoSize = true;
             this.backupCheck.Checked = true;
             this.backupCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.backupCheck.Location = new System.Drawing.Point(19, 352);
+            this.backupCheck.Location = new System.Drawing.Point(144, 352);
             this.backupCheck.Name = "backupCheck";
             this.backupCheck.Size = new System.Drawing.Size(99, 17);
             this.backupCheck.TabIndex = 4;
@@ -588,29 +633,21 @@ namespace RimWorldSaveEditor
             this.colonistListBox.TabIndex = 0;
             this.colonistListBox.SelectedIndexChanged += new System.EventHandler(this.colonistListBox_SelectedIndexChanged);
             // 
-            // label14
+            // dirChangeButton
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(213, 347);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(302, 13);
-            this.label14.TabIndex = 9;
-            this.label14.Text = "Warning: removing thoughts may have unintended side-effects";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(279, 360);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(138, 13);
-            this.label15.TabIndex = 10;
-            this.label15.Text = "USE AT YOUR OWN RISK";
+            this.dirChangeButton.Location = new System.Drawing.Point(6, 375);
+            this.dirChangeButton.Name = "dirChangeButton";
+            this.dirChangeButton.Size = new System.Drawing.Size(138, 28);
+            this.dirChangeButton.TabIndex = 11;
+            this.dirChangeButton.Text = "Change Rimworld Dir";
+            this.dirChangeButton.UseVisualStyleBackColor = true;
+            this.dirChangeButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 424);
+            this.ClientSize = new System.Drawing.Size(598, 460);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -618,7 +655,8 @@ namespace RimWorldSaveEditor
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -672,12 +710,15 @@ namespace RimWorldSaveEditor
         private System.Windows.Forms.ComboBox cookingPassion;
         private System.Windows.Forms.ComboBox constructionPassion;
         private System.Windows.Forms.ComboBox artisticPassion;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ListBox thoughtBox;
         private System.Windows.Forms.Button removeThoughtButton;
         private System.Windows.Forms.CheckBox updateBox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button addThoughtButton;
+        private System.Windows.Forms.ComboBox availableThoughtBox;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button dirChangeButton;
     }
 }
 

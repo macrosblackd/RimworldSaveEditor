@@ -7,7 +7,7 @@ namespace RimWorldSaveEditor
 {
     static class Globals
     {
-        public const string XMLFINDPAWN = "//map/things/thing[@Class = 'Pawn']/faction[text() = 'Colony']";
+        public const string XMLFINDPAWN = "//map/things/thing[@Class = 'Pawn']/kindDef[text() = 'Colonist']";
         public const string XMLSKILLNODE = "skills/skills/li";
     }
 }

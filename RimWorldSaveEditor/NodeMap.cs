@@ -6,27 +6,17 @@ using System.Xml;
 
 namespace RimWorldSaveEditor
 {
+    //Stores references to nodes
     class NodeMap
     {
-        //Stores references to nodes
-
         //Pawn Specific Nodes
         public List<PawnNode> pawnNodeList { get; set; }
-
         //Research Nodes
         public SortedList<string, XmlNode> researchNodes { get; set; }
-
-
         public XmlNode colonyName { get; set; }
-
-
-
-
-
 
         public class PawnNode
         {
-
             //Skill list and passion list key = skill def name
             public SortedList<string, XmlNode> skillNodes { get; set; }
             public SortedList<string, XmlNode> passionNodes { get; set; }

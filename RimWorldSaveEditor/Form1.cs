@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -16,38 +17,41 @@ namespace RimWorldSaveEditor
 {
     public partial class Form1 : Form
     {
-
-        //Need access to XmlHandler and NodeMap globally in class
         string releaseThreadUrl = "http://ludeon.com/forums/index.php?topic=5346.0";
         string versionCheckUrl = "http://pastebin.com/raw.php?i=3LvpsTWB";
         string currentVersion;
 
         XmlHandler handler;
         NodeMap nodeMap;
-        
+        //Lists and reversed lists of SkillName-Control Mappings
         SortedList<string, TextBox> textBoxes;
         Dictionary<TextBox, string> textBoxesReverse;
         SortedList<string, ComboBox> comboBoxes;
         Dictionary<ComboBox, string> comboBoxesReverse;
-        //ThoughtDefDumper tDefDumper;
+        ThoughtDefDumper tDefDumper;
 
         bool toggleOnce,updateChecked;
-        //bool defsLoaded;
 
         //Will need to null check colony name
         public Form1()
         {
             InitializeComponent();
             Version asmVersion = Assembly.GetExecutingAssembly().GetName().Version;
-            string version = String.Format("{0}.{1}.{2}", asmVersion.Major, asmVersion.Minor, asmVersion.Build);
+            string version = String.Format("{0}.{1}.{2}.{3}", asmVersion.Major, asmVersion.Minor, asmVersion.Build, asmVersion.Revision);
             currentVersion = String.Format(version + ".{0}", asmVersion.Revision);
             this.Text = String.Format("RimWorld Save Editor Version: {0}", version);
             PopulateControlLists();
             AssignEventHandler(this);
             ToggleControls();
-            if (Settings.Default.updateCheckEnabled) { CheckUpdate(); }
+            if (Settings.Default.updateCheckEnabled)
+            {
+                Thread updateThread = new Thread(CheckUpdate);
+                updateThread.Start();
+            }
         }
 
+
+        //Update check methods
         public void CheckUpdate()
         {
             using (var WebClient = new WebClient())
@@ -84,6 +88,7 @@ namespace RimWorldSaveEditor
             return 0;
         }
 
+        //Assign textboxes and comboboxes to a single event.
         public void AssignEventHandler(Control control)
         {
             foreach (Control ctrl in control.Controls)
@@ -91,12 +96,12 @@ namespace RimWorldSaveEditor
                 if (ctrl is TextBox)
                 {
                     TextBox textBox = (TextBox)ctrl;
-                    if ((string)textBox.Tag != "health") { textBox.TextChanged += new EventHandler(TextBoxChanged); }
+                    if (textBox.Tag == null) { textBox.TextChanged += new EventHandler(TextBoxChanged); }
                 }
                 else if (ctrl is ComboBox)
                 {
                     ComboBox comboBox = (ComboBox)ctrl;
-                    comboBox.SelectedIndexChanged += new EventHandler(ComboBoxChanged);
+                    if (comboBox.Tag == null) { comboBox.SelectedIndexChanged += new EventHandler(ComboBoxChanged); }
                 }
                 else { AssignEventHandler(ctrl); }
             }
@@ -141,6 +146,26 @@ namespace RimWorldSaveEditor
                 {
                     ToggleControls();
                     toggleOnce = true;
+                }
+            }
+            if(!Settings.Default.rimworldDirSet)
+            {
+                FolderBrowserDialog folderSelector = new FolderBrowserDialog();
+                folderSelector.Description = "Please find the path to your rimworld directory. This is important for thoughtDefs and traitDefs to function.";
+                if(folderSelector.ShowDialog() == DialogResult.OK)
+                {
+                    Settings.Default.rimworldDir = folderSelector.SelectedPath;
+                    Settings.Default.rimworldDirSet = true;
+                    Settings.Default.Save();
+                }
+            }
+            if(Settings.Default.rimworldDirSet)
+            {
+                tDefDumper = new ThoughtDefDumper();
+                tDefDumper.Dump();
+                foreach(string defName in tDefDumper.defList.Keys)
+                {
+                    availableThoughtBox.Items.Add(tDefDumper.defList[defName]);
                 }
             }
         }
@@ -188,7 +213,6 @@ namespace RimWorldSaveEditor
             }
         }
 
-
         private void colonistListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Don't do anything if a save hasn't been loaded
@@ -199,8 +223,6 @@ namespace RimWorldSaveEditor
             RefreshSkills();
             RefreshPassions();
             RefreshThoughts();
-
-
         }
 
         private void healthBox_TextChanged(object sender, EventArgs e)
@@ -227,9 +249,12 @@ namespace RimWorldSaveEditor
             removeThoughtButton.Enabled = !removeThoughtButton.Enabled;
             healthBox.Enabled = !healthBox.Enabled;
             backupCheck.Enabled = !backupCheck.Enabled;
+            dirChangeButton.Enabled = !dirChangeButton.Enabled;
+            availableThoughtBox.Enabled = !availableThoughtBox.Enabled;
+            addThoughtButton.Enabled = !addThoughtButton.Enabled;
         }
 
-
+        //Populates SkillName-Control mappings and reverses
         private void PopulateControlLists()
         {
             textBoxes = new SortedList<string, TextBox>();
@@ -262,6 +287,7 @@ namespace RimWorldSaveEditor
             comboBoxesReverse = comboBoxes.ToDictionary(x => x.Value, x => x.Key);
         }
 
+        //the following refresh* methods were made to encapsulate changes so we're not refreshing everything when one thing changes except when needed
         private void RefreshSkills()
         {
             foreach (string key in textBoxes.Keys)
@@ -319,6 +345,41 @@ namespace RimWorldSaveEditor
             if(!updateChecked)
             {
                 CheckUpdate();
+            }
+        }
+
+        private void addThoughtButton_Click(object sender, EventArgs e)
+        {
+            string defName = tDefDumper.defListReverse[availableThoughtBox.GetItemText(availableThoughtBox.SelectedItem)];
+            if (defName.Contains(':'))
+            {
+                defName = defName.Split(':')[0];
+            }
+            handler.AddThought(defName, GetSelectedPawn().pawn);
+            GetSelectedPawn().thoughtNodes = handler.RepopThoughtsForPawn(GetSelectedPawn().pawn);
+            RefreshThoughts();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderSelector = new FolderBrowserDialog();
+            folderSelector.Description = "Please find the path to your rimworld directory. This is important for thoughtDefs and traitDefs to function.";
+            if (folderSelector.ShowDialog() == DialogResult.OK)
+            {
+                Settings.Default.rimworldDir = folderSelector.SelectedPath;
+                Settings.Default.rimworldDirSet = true;
+                Settings.Default.Save();
+            }
+
+            if (Settings.Default.rimworldDirSet)
+            {
+                tDefDumper = new ThoughtDefDumper();
+                tDefDumper.Dump();
+                foreach (string defName in tDefDumper.defList.Keys)
+                {
+                    availableThoughtBox.Items.Add(tDefDumper.defList[defName]);
+                }
             }
         }
     }
