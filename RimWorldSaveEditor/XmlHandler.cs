@@ -76,6 +76,8 @@ namespace RimWorldSaveEditor
                 workingPawnNode.nameFirst = storyNode.SelectSingleNode("name.first");
                 workingPawnNode.nameLast = storyNode.SelectSingleNode("name.last");
                 workingPawnNode.nameNick = storyNode.SelectSingleNode("name.nick");
+                workingPawnNode.childhood = storyNode.SelectSingleNode("childhood");
+                workingPawnNode.adulthood = storyNode.SelectSingleNode("adulthood");
                 //Concatenate full name
                 workingPawnNode.InitNames();
 
