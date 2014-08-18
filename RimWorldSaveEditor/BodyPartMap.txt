@@ -1,0 +1,31 @@
+﻿1 = Left Clavicle
+2 = Right Clavicle
+3 = Sternum
+5 = Rib
+17 = Spine
+29 = Left Eye
+30 = Right Eye
+31 = Left Ear
+32 = Right Ear
+33 = Nose
+34 = Jaw
+35 = Left Arm
+36 = Left Humourus
+37 = Left Radius
+40 = Left Hand Ring Finger
+44 = Right Arm
+45 = Right Humourus
+50 = Right Hand Middle Finger
+51 = Right Hand Index Finger
+52 = Right Hand Thumb
+53 = Left Leg
+54 = Left Femur
+55 = Left Tibia
+56 = Left Foot
+57 = Left Foot Little Toe
+60 = Left Foot Index Toe
+62 = Right Leg
+65 = Right Foot
+70 = Right Foot Big Toe
+
+Thanks to ItchyFlea via rimworld forums
