@@ -116,9 +116,19 @@ namespace RimWorldSaveEditor
                 //Start Thought Loop
                 SortedList<string, XmlNode> thoughtNodeList = new SortedList<string, XmlNode>();
                 XmlNodeList topLevelThoughts = pawnNode.SelectNodes("psychology/thoughts/thoughts/li");
+                Dictionary<string, int> thoughtDupes = new Dictionary<string, int>();
                 foreach(XmlNode thoughtNode in topLevelThoughts)
                 {
                     string name = thoughtNode.SelectSingleNode("def").InnerText + ":" + thoughtNode.SelectSingleNode("age").InnerText;
+                    if (!thoughtDupes.ContainsKey(name))
+                    {
+                        thoughtDupes.Add(name, 1);
+                    }
+                    else
+                    {
+                        name = name + ":" +thoughtDupes[name];
+                        thoughtDupes[thoughtNode.SelectSingleNode("def").InnerText + ":" + thoughtNode.SelectSingleNode("age").InnerText]++;
+                    }
                     thoughtNodeList.Add(name, thoughtNode);
                 }
                 //add thoughts to pawn
@@ -213,9 +223,19 @@ namespace RimWorldSaveEditor
         {
             XmlNodeList topLevelThoughts = pNode.SelectNodes("psychology/thoughts/thoughts/li");
             SortedList<string, XmlNode> thoughtNodeList = new SortedList<string, XmlNode>();
+            Dictionary<string, int> thoughtDupes = new Dictionary<string, int>();
             foreach (XmlNode thoughtNode in topLevelThoughts)
             {
                 string name = thoughtNode.SelectSingleNode("def").InnerText + ":" + thoughtNode.SelectSingleNode("age").InnerText;
+                if (!thoughtDupes.ContainsKey(name))
+                {
+                    thoughtDupes.Add(name, 1);
+                }
+                else
+                {
+                    name = name + ":" + thoughtDupes[name];
+                    thoughtDupes[thoughtNode.SelectSingleNode("def").InnerText + ":" + thoughtNode.SelectSingleNode("age").InnerText]++;
+                }
                 thoughtNodeList.Add(name, thoughtNode);
             }
             return thoughtNodeList;

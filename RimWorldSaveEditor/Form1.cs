@@ -1,5 +1,4 @@
 ﻿using System.Xml.Linq;
-using RimWorldSaveEditor.models;
 using RimWorldSaveEditor.Properties;
 using System;
 using System.Collections.Generic;
@@ -27,8 +26,7 @@ namespace RimWorldSaveEditor
         Dictionary<TextBox, string> skillTextBoxesReverse;
         SortedList<string, ComboBox> skillComboBoxes;
         Dictionary<ComboBox, string> skillComboBoxesReverse;
-        ThoughtDefDumper tDefDumper;
-        private SortedList<string, ComboboxItem<Backstory>> backstoryItems;
+        
 
         bool toggleOnce,updateChecked;
 
@@ -41,7 +39,6 @@ namespace RimWorldSaveEditor
             currentVersion = String.Format(version + ".{0}", asmVersion.Revision);
             this.Text = String.Format("RimWorld Save Editor Version: {0}", version);
             PopulateSkillControlLists();
-            PopulateBackstories();
             AssignSkillsEventHandler();
             ToggleControls();
             if (Settings.Default.updateCheckEnabled)
@@ -142,6 +139,10 @@ namespace RimWorldSaveEditor
                 nodeMap = handler.Populate();
                 colonistListBox.DataSource = nodeMap.pawnNodeList;
                 colonistListBox.DisplayMember = "fullName";
+                DefDumper.DumpBackstories();
+                PopulateBackstories();
+
+
                 if (!toggleOnce)
                 {
                     ToggleControls();
@@ -163,25 +164,6 @@ namespace RimWorldSaveEditor
             {
                 PopulateAvailableThoughts();
             }
-        }
-
-        public static string CapitalizedNoSpaces(string s)
-        {
-            string str1 = s;
-            char[] chArray = new char[1];
-            int index = 0;
-            int num = 32;
-            chArray[index] = (char)num;
-            string[] strArray = str1.Split(chArray);
-            StringBuilder stringBuilder = new StringBuilder();
-            foreach (string str2 in strArray)
-            {
-                if (str2.Length > 0)
-                    stringBuilder.Append(char.ToUpper(str2[0]));
-                if (str2.Length > 1)
-                    stringBuilder.Append(str2.Substring(1));
-            }
-            return stringBuilder.ToString();
         }
 
         private void SkillTextBoxChanged(object sender, EventArgs args)
@@ -235,9 +217,9 @@ namespace RimWorldSaveEditor
             healthBox.Text = GetSelectedPawn().pawnHealth.InnerText;
             RefreshSkills();
             RefreshPassions();
-            RefreshColonistBackstories();
             RefreshHealth();
             RefreshThoughts();
+            RefreshBackstories();
         }
 
        
@@ -346,15 +328,29 @@ namespace RimWorldSaveEditor
             }
         }
 
-        private void RefreshColonistBackstories()
+        private void PopulateBackstories()
         {
-            childBackstory.SelectedItem = backstoryItems[GetSelectedPawn().childhood.InnerText];
-            adultBackstory.SelectedItem = backstoryItems[GetSelectedPawn().adulthood.InnerText];
+            adultBackstory.Items.Clear();
+            childBackstory.Items.Clear();
+            foreach(string name in DefDumper.backstoriesAdult.Keys)
+            {
+                adultBackstory.Items.Add(name);
+            }
+            foreach (string name in DefDumper.backstoriesChild.Keys)
+            {
+                childBackstory.Items.Add(name);
+            }
         }
 
         private void RefreshHealth()
         {
             //TODO: SETUP LATER
+        }
+
+        private void RefreshBackstories()
+        {
+            adultBackstory.SelectedItem = DefDumper.backstoriesAdultReverse[GetSelectedPawn().adulthood.InnerText];
+            childBackstory.SelectedItem = DefDumper.backstoriesChildReverse[GetSelectedPawn().childhood.InnerText];
         }
 
         private void removeThoughtButton_Click(object sender, EventArgs e)
@@ -375,9 +371,11 @@ namespace RimWorldSaveEditor
             }
         }
 
+
+
         private void addThoughtButton_Click(object sender, EventArgs e)
         {
-            string defName = tDefDumper.defListReverse[availableThoughtBox.GetItemText(availableThoughtBox.SelectedItem)];
+            string defName = DefDumper.defListReverse[availableThoughtBox.GetItemText(availableThoughtBox.SelectedItem)];
             if (defName.Contains(':'))
             {
                 defName = defName.Split(':')[0];
@@ -405,39 +403,23 @@ namespace RimWorldSaveEditor
             }
         }
 
-        private void PopulateBackstories()
-        {
-            backstoryItems = new SortedList<string, ComboboxItem<Backstory>>(BackstoryLoader.LoadBackstories()
-                .ToDictionary(s => s.DefName, s => new ComboboxItem<Backstory>(s.Title, s)));
-            adultBackstory.Items.AddRange(backstoryItems.Values.Where(s => s.Value.Slot == BackstorySlot.Adulthood).ToArray());
-            childBackstory.Items.AddRange(backstoryItems.Values.Where(s => s.Value.Slot == BackstorySlot.Childhood).ToArray());
-        }
-
         private void PopulateAvailableThoughts()
         {
-            tDefDumper = new ThoughtDefDumper();
-            tDefDumper.Dump();
-            foreach (string defName in tDefDumper.defList.Keys)
+            DefDumper.DumpThoughts();
+            foreach (string defName in DefDumper.defList.Keys)
             {
-                availableThoughtBox.Items.Add(tDefDumper.defList[defName]);
+                availableThoughtBox.Items.Add(DefDumper.defList[defName]);
             }
         }
 
-        private class ComboboxItem<T>
+        private void childBackstory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            public string Name { get; private set; }
-            public T Value { get; private set; }
+            GetSelectedPawn().childhood.InnerText = DefDumper.backstoriesChild[childBackstory.GetItemText(childBackstory.SelectedItem)];
+        }
 
-            public ComboboxItem(string name, T value)
-            {
-                Name = name;
-                Value = value;
-            }
-
-            public override string ToString()
-            {
-                return Name;
-            }
+        private void adultBackstory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetSelectedPawn().adulthood.InnerText = DefDumper.backstoriesAdult[adultBackstory.GetItemText(adultBackstory.SelectedItem)];
         }
     }
 }

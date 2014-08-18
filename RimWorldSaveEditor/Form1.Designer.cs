@@ -203,7 +203,9 @@ namespace RimWorldSaveEditor
             this.adultBackstory.Location = new System.Drawing.Point(6, 48);
             this.adultBackstory.Name = "adultBackstory";
             this.adultBackstory.Size = new System.Drawing.Size(147, 21);
+            this.adultBackstory.Sorted = true;
             this.adultBackstory.TabIndex = 2;
+            this.adultBackstory.SelectedIndexChanged += new System.EventHandler(this.adultBackstory_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -220,7 +222,9 @@ namespace RimWorldSaveEditor
             this.childBackstory.Location = new System.Drawing.Point(7, 21);
             this.childBackstory.Name = "childBackstory";
             this.childBackstory.Size = new System.Drawing.Size(147, 21);
+            this.childBackstory.Sorted = true;
             this.childBackstory.TabIndex = 0;
+            this.childBackstory.SelectedIndexChanged += new System.EventHandler(this.childBackstory_SelectedIndexChanged);
             // 
             // skillsGroup
             // 

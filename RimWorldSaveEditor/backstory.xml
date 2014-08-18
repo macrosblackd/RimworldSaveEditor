@@ -1,0 +1,1182 @@
+<root>
+  <backstory>
+    <title>Colony settler</title>
+    <def>ColonySettlerSettler548680132</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Medieval farm oaf</title>
+    <def>MedievalFarmOafOaf-1223929961</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Medieval lord</title>
+    <def>MedievalLordNoble-1107055137</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Urbworld entrepreneur</title>
+    <def>UrbworldEntrepreneurEntrepreneur783185744</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Deep space miner</title>
+    <def>DeepSpaceMinerMiner-196761392</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Navy scientist</title>
+    <def>NavyScientistScientist-789717201</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Military commissar</title>
+    <def>MilitaryCommissarCommissar1851222804</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Space pirate</title>
+    <def>SpacePiratePirate-242688036</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Pit brawler</title>
+    <def>PitBrawlerBrawler581177596</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Illegal shipwright</title>
+    <def>IllegalShipwrightShipwright1685215568</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Courtesean</title>
+    <def>CourteseanCourtesean-170236453</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Space marine</title>
+    <def>SpaceMarineMarine185403064</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Assassin</title>
+    <def>AssassinAssassin-2031912390</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Medieval slave</title>
+    <def>MedievalSlaveUntitledShort-1854256038</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Medieval lordling</title>
+    <def>MedievalLordlingUntitledShort1206230971</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Urbworld urchin</title>
+    <def>UrbworldUrchinUntitledShort-2065431047</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Vatgrown soldier</title>
+    <def>VatgrownSoldierUntitledShort-1789930172</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Hermit</title>
+    <def>HermitHermit-314348748</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Terra child</title>
+    <def>TerraChildTerrakid-1856365298</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Midworld chef</title>
+    <def>MidworldChefChef249226254</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Sickly child</title>
+    <def>SicklyChildPatient1877895165</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Medieval minstrel</title>
+    <def>MedievalMinstrelMinstrel-1599092054</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Housemate</title>
+    <def>HousemateHousemate1072167982</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Glitterworld empath</title>
+    <def>GlitterworldEmpathEmpath853686844</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Shelter child</title>
+    <def>ShelterChildShelterkid1010373040</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Medieval doctor</title>
+    <def>MedievalDoctorQuack-112753465</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Inventor</title>
+    <def>InventorInventor989176807</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Teacher</title>
+    <def>TeacherTeacher-1132032313</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Industrial orphan</title>
+    <def>IndustrialOrphanOrphan198926222</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Scout</title>
+    <def>ScoutScout1337530160</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Joywire artist</title>
+    <def>JoywireArtistJoywirer-960014887</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Frightened child</title>
+    <def>FrightenedChildScared1936179605</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Conceptual artist</title>
+    <def>ConceptualArtistArtist-1806305823</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Glitterworld surgeon</title>
+    <def>GlitterworldSurgeonSurgeon1809539576</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Luddite rebel</title>
+    <def>LudditeRebelLuddite1864176822</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Bartender</title>
+    <def>BartenderBarkeep-691004614</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Caveworld tender</title>
+    <def>CaveworldTenderCaveKid-28503580</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Caveworld tunneler</title>
+    <def>CaveworldTunnelerTunneler-31704600</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Hiveworld drone</title>
+    <def>HiveworldDroneDrone744751892</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Evangelist</title>
+    <def>EvangelistEvangelist-363898353</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Tunnelworld illuminator</title>
+    <def>TunnelworldIlluminatorIlluminator-1612249645</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Herbalist</title>
+    <def>HerbalistHerbalist277705850</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Coma child</title>
+    <def>ComaChildComa2069355209</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Civil servant</title>
+    <def>CivilServantClerk-781400184</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Organ farm</title>
+    <def>OrganFarmOrganFarm-1975241080</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Ascetic priest</title>
+    <def>AsceticPriestPriest-15425292</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Escaped convict</title>
+    <def>EscapedConvictEscapee451861965</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Starship janitor</title>
+    <def>StarshipJanitorJanitor463158868</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Con artist</title>
+    <def>ConArtistConArtist1262324175</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Gatherer</title>
+    <def>GathererGatherer2096428845</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Loner</title>
+    <def>LonerLoner-612216988</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Herder</title>
+    <def>HerderHerder1552225554</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Healer</title>
+    <def>HealerHealer1314742582</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Reclusive child</title>
+    <def>ReclusiveChildReclusive-1215818330</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Scout</title>
+    <def>ScoutScout-701245629</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Digger</title>
+    <def>DiggerDigger1700914775</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Scavenger</title>
+    <def>ScavengerScavenger2123102471</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Muffalo shaman</title>
+    <def>MuffaloShamanShaman-1665745981</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Lore keeper</title>
+    <def>LoreKeeperKeeper-1488815816</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Weaver</title>
+    <def>WeaverWeaver754137459</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Cave child</title>
+    <def>CaveChildCave-1775827040</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Sole survivor</title>
+    <def>SoleSurvivorSurvivor1941709132</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Vengeful child</title>
+    <def>VengefulChildVengeful2095090148</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Cave tender</title>
+    <def>CaveTenderTender-739356569</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Abandoned child</title>
+    <def>AbandonedChildAbandoned73992984</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Warrior</title>
+    <def>WarriorWarrior864670522</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Fire tender</title>
+    <def>FireTenderFire-1361579505</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Tribe child</title>
+    <def>TribeChildUntitledShort588766429</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Fallen prodigy</title>
+    <def>FallenProdigyProdigy-1798082836</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Mad scientist</title>
+    <def>MadScientistScientist347161273</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Farmer boy</title>
+    <def>FarmerBoyFarmer-77265168</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Army cook</title>
+    <def>ArmyCookCook-21019398</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Urbworld criminal</title>
+    <def>UrbworldCriminalCriminal-40124775</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Urbworld politican</title>
+    <def>UrbworldPoliticanPolitician-365971007</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Optimistic child</title>
+    <def>OptimisticChildOptimistic-1563487772</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Graphic designer</title>
+    <def>GraphicDesignerDesigner1204922082</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Aristocrat</title>
+    <def>AristocratAristocrat566279082</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Wasteland ruffian</title>
+    <def>WastelandRuffianWaster-691203896</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Urbworld hooligan</title>
+    <def>UrbworldHooliganHooligan-2014623722</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Space technician</title>
+    <def>SpaceTechnicianTechnician769794800</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Tragic twin</title>
+    <def>TragicTwinTwin-148802140</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Space traveler</title>
+    <def>SpaceTravelerSpacer-2022602659</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Indworld urchin</title>
+    <def>IndworldUrchinUrchin-232007980</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Doomsday pariah</title>
+    <def>DoomsdayPariahPariah-1369088427</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Dreamer</title>
+    <def>DreamerDreamer-717963252</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Pirate surveyor</title>
+    <def>PirateSurveyorSurveyor-774936943</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Mechanoid nerd</title>
+    <def>MechanoidNerdMechanerd-164302805</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Military engineer</title>
+    <def>MilitaryEngineerEngineer-1065998683</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Shunned girl</title>
+    <def>ShunnedGirlShunned-1549504087</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Art student</title>
+    <def>ArtStudentArtist-1096428940</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Coliseum cleaner</title>
+    <def>ColiseumCleanerCleaner-1952739005</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Coliseum fighter</title>
+    <def>ColiseumFighterFighter-1022733180</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Officer cadet</title>
+    <def>OfficerCadetCadet2146762274</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Fighter controller</title>
+    <def>FighterControllerController1342627919</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>War refugee</title>
+    <def>WarRefugeeRefugee192823133</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Vengeful explorer</title>
+    <def>VengefulExplorerExplorer-392203307</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Toxic child</title>
+    <def>ToxicChildToxic2014677921</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Criminal tinker</title>
+    <def>CriminalTinkerTinker719339232</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Work camp slave</title>
+    <def>WorkCampSlaveSlave-1318654946</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Banished soldier</title>
+    <def>BanishedSoldierOutlaw-873112831</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Disciplined farmer</title>
+    <def>DisciplinedFarmerFarmer-1344788819</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Stalwart farmer</title>
+    <def>StalwartFarmerFarmer-1426381478</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Voyager child</title>
+    <def>VoyagerChildVoyager210234616</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Space researcher</title>
+    <def>SpaceResearcherResearcher967250808</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Vatgrown medic</title>
+    <def>VatgrownMedicMedic-1845717155</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Genetic scientist</title>
+    <def>GeneticScientistGeneticist-1804535577</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Core dilettante</title>
+    <def>CoreDilettanteDilettante2002988252</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Reporter</title>
+    <def>ReporterReporter-684027124</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Aspiring pop idol</title>
+    <def>AspiringPopIdolPopIdol1953635918</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Pop idol</title>
+    <def>PopIdolPopIdol2116195221</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Farm boy</title>
+    <def>FarmBoyFarmBoy-1160998739</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Unstable butcher</title>
+    <def>UnstableButcherButcher-628062327</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Station whelp</title>
+    <def>StationWhelpWhelp394681858</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Pirate king</title>
+    <def>PirateKingPirate-260328177</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Construction grunt</title>
+    <def>ConstructionGruntBuilder989482756</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Military inventor</title>
+    <def>MilitaryInventorInventor624239427</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Street kid</title>
+    <def>StreetKidStreetKid1579731410</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Bandit leader</title>
+    <def>BanditLeaderBandit2032857037</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Student engineer</title>
+    <def>StudentEngineerEngineer-2135203745</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Engineered pilot</title>
+    <def>EngineeredPilotPilot-1522502346</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Frontier marshal</title>
+    <def>FrontierMarshalMarshal-101805059</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Colonial governor</title>
+    <def>ColonialGovernorGovernor742643032</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Mercenary recruit</title>
+    <def>MercenaryRecruitMercenary-1818390413</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Mercenary chef</title>
+    <def>MercenaryChefMercenary-41689809</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Abandoned child</title>
+    <def>AbandonedChildAbandoned-998501485</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Cargo pilot</title>
+    <def>CargoPilotPilot-502940301</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Traders' child</title>
+    <def>Traders'ChildTrader59047170</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Space humanitarian</title>
+    <def>SpaceHumanitarianActivist1671288259</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>VR addict</title>
+    <def>VRAddictVRAddict-232626377</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Rugby player</title>
+    <def>RugbyPlayerWinger1100093002</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Nerd</title>
+    <def>NerdNerd-25411655</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>State engineer</title>
+    <def>StateEngineerEngineer2020068319</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Rebel slave</title>
+    <def>RebelSlaveRebel1107355169</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Combat negotiator</title>
+    <def>CombatNegotiatorNegotiator1009126112</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Son of a huntress</title>
+    <def>SonOfAHuntressHunter-1209611139</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Space hunter</title>
+    <def>SpaceHunterHuntsman-1410822202</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Student socialite</title>
+    <def>StudentSocialiteSocialite-284620850</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Political assassin</title>
+    <def>PoliticalAssassinDeathjack1485729266</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Awkward nerd</title>
+    <def>AwkwardNerdNerd-1588720539</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>AI researcher</title>
+    <def>AIResearcherResearcher-1069036335</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Cat herder</title>
+    <def>CatHerderHerder-1284077204</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Feline scientist</title>
+    <def>FelineScientistScientist194649050</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Vatgrown assassin</title>
+    <def>VatgrownAssassinClone856617132</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Mercenary</title>
+    <def>MercenaryMerc588202295</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Hive world child</title>
+    <def>HiveWorldChildHiver-788865833</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Microbiologist</title>
+    <def>MicrobiologistBiologist-1785803684</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Stableboy</title>
+    <def>StableboyStableboy-1507122994</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Brigand</title>
+    <def>BrigandBrigand1081902792</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Starforce cadet</title>
+    <def>StarforceCadetCadet-2072077944</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Ace fighter pilot</title>
+    <def>AceFighterPilotAce1991338294</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Artful dodger</title>
+    <def>ArtfulDodgerDodger-733578674</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Assassin</title>
+    <def>AssassinAssassin-926486551</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Pickpocket</title>
+    <def>PickpocketPickpocket-377469</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Business gangster</title>
+    <def>BusinessGangsterGangster1308670492</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>History student</title>
+    <def>HistoryStudentStudent-403989566</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Storyteller</title>
+    <def>StorytellerFabulist-948834564</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Noble ward</title>
+    <def>NobleWardWard-1767246054</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Information broker</title>
+    <def>InformationBrokerBroker-125869715</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Feral child</title>
+    <def>FeralChildFeral1488868254</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Versatile worker</title>
+    <def>VersatileWorkerWorker1760653082</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Spoiled child</title>
+    <def>SpoiledChildSpoiled717959159</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Test subject</title>
+    <def>TestSubjectExperiment-1129677352</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Amateur engineer</title>
+    <def>AmateurEngineerEngineer-422206132</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Aerospace engineer</title>
+    <def>AerospaceEngineerEngineer-671527569</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Wild child</title>
+    <def>WildChildWildChild-519813729</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Alcoholic trucker</title>
+    <def>AlcoholicTruckerAlcoholic-1836730023</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Hacker prodigy</title>
+    <def>HackerProdigyHacker1601494545</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Intelligence agent</title>
+    <def>IntelligenceAgentAgent1493035233</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Youth delinquent</title>
+    <def>YouthDelinquentDelinquent1157885496</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Involuntary hermit</title>
+    <def>InvoluntaryHermitHermit-1594779857</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Hillbilly prodigy</title>
+    <def>HillbillyProdigyHillbilly1609050180</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Medical scientist</title>
+    <def>MedicalScientistScientist-1825787236</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Core world student</title>
+    <def>CoreWorldStudentStudent615786831</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Core world jeweler</title>
+    <def>CoreWorldJewelerJeweler-1879221326</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Medieval squire</title>
+    <def>MedievalSquireSquire-789084672</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Medieval knight </title>
+    <def>MedievalKnightKnight662003584</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Drug mule</title>
+    <def>DrugMuleMule-291099239</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Test subject</title>
+    <def>TestSubjectSubject1953744573</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Artisan farmer</title>
+    <def>ArtisanFarmerFarmer-541085903</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Genetic engineer</title>
+    <def>GeneticEngineerGeneticist1551263016</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Pampered</title>
+    <def>PamperedPampered751593373</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Ninja assassin</title>
+    <def>NinjaAssassinNinja-219622936</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Military child</title>
+    <def>MilitaryChildMilitary-880253481</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Lazy programmer</title>
+    <def>LazyProgrammerProgrammer-2095657853</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Gang member</title>
+    <def>GangMemberGanger-1885033893</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Mindwiped assassin</title>
+    <def>MindwipedAssassinMindwipe-152847031</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Test subject</title>
+    <def>TestSubjectSubject-1096000675</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Test subject</title>
+    <def>TestSubjectSubject-1295795469</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Fire-scarred child</title>
+    <def>Fire-scarredChildScarred-1473475407</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Spaceship salesman</title>
+    <def>SpaceshipSalesmanSalesman430957697</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Winerunner</title>
+    <def>WinerunnerWinerunner2056734111</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Vinho king</title>
+    <def>VinhoKingBoozeKing436190407</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Street child</title>
+    <def>StreetChildStreet507895928</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Slave chemist</title>
+    <def>SlaveChemistChemist1454443160</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Slave farmer</title>
+    <def>SlaveFarmerSlave1861421808</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Rocket engineer</title>
+    <def>RocketEngineerEngineer231500400</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Medieval slave</title>
+    <def>MedievalSlaveSlave1870855603</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Space marine</title>
+    <def>SpaceMarineMarine380196614</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Foundry apprentice</title>
+    <def>FoundryApprenticeFoundryman-2120101216</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Combat engineer</title>
+    <def>CombatEngineerEngineer1512663693</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Privileged prodigy</title>
+    <def>PrivilegedProdigyProdigy-520950264</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Planetary diplomat</title>
+    <def>PlanetaryDiplomatDiplomat-1397523373</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Child prodigy</title>
+    <def>ChildProdigyProdigy1047732893</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Renegade engineer</title>
+    <def>RenegadeEngineerEngineer1317162134</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>G-nome sculptor</title>
+    <def>G-nomeSculptorSculptor-578914408</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Gnomebiologist</title>
+    <def>GnomebiologistBiologist869687405</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Circus performer</title>
+    <def>CircusPerformerPerformer525375366</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Criminal kingpin</title>
+    <def>CriminalKingpinKingpin-1484233894</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Vatgrown slavegirl</title>
+    <def>VatgrownSlavegirlSlaveGirl-499545249</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Urbworld sex slave</title>
+    <def>UrbworldSexSlaveSexSlave937822678</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Gun kid</title>
+    <def>GunKidGunKid-626573996</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Urbworld sergeant</title>
+    <def>UrbworldSergeantSergeant982167966</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Feudal farm boy</title>
+    <def>FeudalFarmBoySlave1199714148</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Hunter of the king</title>
+    <def>HunterOfTheKingPestGuard1101522392</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Glitterworld nerd</title>
+    <def>GlitterworldNerdNerd1546036723</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Energy researcher</title>
+    <def>EnergyResearcherResearcher632582445</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>War child</title>
+    <def>WarChildWarChild1824862608</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Bounty hunter</title>
+    <def>BountyHunterHunter64393243</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Upper urbworlder</title>
+    <def>UpperUrbworlderHighUrber1434346613</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Missionary</title>
+    <def>MissionaryMissionary150385696</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Amateur botanist</title>
+    <def>AmateurBotanistBotanist-2101228717</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Undertaker</title>
+    <def>UndertakerUndertaker-1161016445</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Child slave</title>
+    <def>ChildSlaveSlave106089815</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Mercenary</title>
+    <def>MercenaryMercenary197777890</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Adventuring child</title>
+    <def>AdventuringChildAdventurer812068949</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Hired assassin</title>
+    <def>HiredAssassinAssassin1683261529</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Tinkerer</title>
+    <def>TinkererTinkerer703764258</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Engineer</title>
+    <def>EngineerEngineer1810606168</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Displaced noble</title>
+    <def>DisplacedNobleNoble-1922570201</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Minister</title>
+    <def>MinisterMinister1874941413</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Chess master</title>
+    <def>ChessMasterChesshead-2008684302</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Pirate</title>
+    <def>PiratePirate-2070765826</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Orphan</title>
+    <def>OrphanOrphan-1521487287</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Bounty hunter</title>
+    <def>BountyHunterHunter844948285</def>
+    <slot>Adulthood</slot>
+  </backstory>
+  <backstory>
+    <title>Youth hooligan</title>
+    <def>YouthHooliganUntitledShort-79774338</def>
+    <slot>Childhood</slot>
+  </backstory>
+  <backstory>
+    <title>Bad magician</title>
+    <def>BadMagicianMagician1905829922</def>
+    <slot>Adulthood</slot>
+  </backstory>
+</root>

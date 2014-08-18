@@ -30,10 +30,8 @@ namespace RimWorldSaveEditor
             //Health Node
             public XmlNode pawnHealth { get; set; }
             public SortedList<string, XmlNode> thoughtNodes { get; set; }
-
             public XmlNode childhood { get; set; }
             public XmlNode adulthood { get; set; }
-
             public void InitNames()
             {
                 this.fullName = nameFirst.InnerText + " " + nameNick.InnerText + " " + nameLast.InnerText;
