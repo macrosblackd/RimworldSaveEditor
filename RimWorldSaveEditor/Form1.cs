@@ -1,9 +1,7 @@
-﻿using RimWorldSaveEditor.Properties;
+﻿using System.Xml.Linq;
+using RimWorldSaveEditor.Properties;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -24,11 +22,11 @@ namespace RimWorldSaveEditor
         XmlHandler handler;
         NodeMap nodeMap;
         //Lists and reversed lists of SkillName-Control Mappings
-        SortedList<string, TextBox> textBoxes;
-        Dictionary<TextBox, string> textBoxesReverse;
-        SortedList<string, ComboBox> comboBoxes;
-        Dictionary<ComboBox, string> comboBoxesReverse;
-        ThoughtDefDumper tDefDumper;
+        SortedList<string, TextBox> skillTextBoxes;
+        Dictionary<TextBox, string> skillTextBoxesReverse;
+        SortedList<string, ComboBox> skillComboBoxes;
+        Dictionary<ComboBox, string> skillComboBoxesReverse;
+        
 
         bool toggleOnce,updateChecked;
 
@@ -40,8 +38,8 @@ namespace RimWorldSaveEditor
             string version = String.Format("{0}.{1}.{2}.{3}", asmVersion.Major, asmVersion.Minor, asmVersion.Build, asmVersion.Revision);
             currentVersion = String.Format(version + ".{0}", asmVersion.Revision);
             this.Text = String.Format("RimWorld Save Editor Version: {0}", version);
-            PopulateControlLists();
-            AssignEventHandler(this);
+            PopulateSkillControlLists();
+            AssignSkillsEventHandler();
             ToggleControls();
             if (Settings.Default.updateCheckEnabled)
             {
@@ -88,22 +86,21 @@ namespace RimWorldSaveEditor
             return 0;
         }
 
-        //Assign textboxes and comboboxes to a single event.
-        public void AssignEventHandler(Control control)
+        //Assign textboxes and comboboxes in skillGroup to a single event.
+        public void AssignSkillsEventHandler()
         {
-            foreach (Control ctrl in control.Controls)
+            foreach (Control ctrl in skillsGroup.Controls)
             {
-                if (ctrl is TextBox)
+                var txt = ctrl as TextBox;
+                var cbo = ctrl as ComboBox;
+                if (txt != null)
                 {
-                    TextBox textBox = (TextBox)ctrl;
-                    if (textBox.Tag == null) { textBox.TextChanged += new EventHandler(TextBoxChanged); }
+                    txt.TextChanged += SkillTextBoxChanged;
                 }
-                else if (ctrl is ComboBox)
+                else if (cbo != null)
                 {
-                    ComboBox comboBox = (ComboBox)ctrl;
-                    if (comboBox.Tag == null) { comboBox.SelectedIndexChanged += new EventHandler(ComboBoxChanged); }
+                    cbo.SelectedIndexChanged += SkillComboBoxChanged; 
                 }
-                else { AssignEventHandler(ctrl); }
             }
         }
 
@@ -142,6 +139,10 @@ namespace RimWorldSaveEditor
                 nodeMap = handler.Populate();
                 colonistListBox.DataSource = nodeMap.pawnNodeList;
                 colonistListBox.DisplayMember = "fullName";
+                DefDumper.DumpBackstories();
+                PopulateBackstories();
+
+
                 if (!toggleOnce)
                 {
                     ToggleControls();
@@ -161,26 +162,20 @@ namespace RimWorldSaveEditor
             }
             if(Settings.Default.rimworldDirSet)
             {
-                tDefDumper = new ThoughtDefDumper();
-                tDefDumper.Dump();
-                foreach(string defName in tDefDumper.defList.Keys)
-                {
-                    availableThoughtBox.Items.Add(tDefDumper.defList[defName]);
-                }
+                PopulateAvailableThoughts();
             }
         }
 
-
-        private void TextBoxChanged(object sender, EventArgs args)
+        private void SkillTextBoxChanged(object sender, EventArgs args)
         {
-            TextBox changedBox = (TextBox)sender;
-            XmlNode modNode = GetSelectedPawn().skillNodes[textBoxesReverse[changedBox]];
+            var changedBox = (TextBox)sender;
+            XmlNode modNode = GetSelectedPawn().skillNodes[skillTextBoxesReverse[changedBox]];
             handler.ModifyNode(modNode, changedBox.Text);
         }
 
-        private void ComboBoxChanged(object sender, EventArgs args)
+        private void SkillComboBoxChanged(object sender, EventArgs args)
         {
-            ComboBox changedBox = (ComboBox)sender;
+            var changedBox = (ComboBox)sender;
             string value = null;
             switch (changedBox.SelectedIndex)
             {
@@ -197,18 +192,18 @@ namespace RimWorldSaveEditor
 
             if (value == "None")
             {
-                handler.RemovePassionNode(GetSelectedPawn().skillNodes[comboBoxesReverse[changedBox]].ParentNode);
+                handler.RemovePassionNode(GetSelectedPawn().skillNodes[skillComboBoxesReverse[changedBox]].ParentNode);
             }
 
-            XmlNode pNode = GetSelectedPawn().passionNodes[comboBoxesReverse[changedBox]];
+            XmlNode pNode = GetSelectedPawn().passionNodes[skillComboBoxesReverse[changedBox]];
             if (pNode != null && pNode.InnerText != null)
             {
                 handler.ModifyNode(pNode, value);
             }
             else
             {
-                XmlNode passNode = GetSelectedPawn().skillNodes[comboBoxesReverse[changedBox]].ParentNode;
-                //GetSelectedPawn().passionNodes[comboBoxesReverse[changedBox]] = 
+                XmlNode passNode = GetSelectedPawn().skillNodes[skillComboBoxesReverse[changedBox]].ParentNode;
+                //GetSelectedPawn().passionNodes[skillComboBoxesReverse[changedBox]] = 
                 handler.MakePassionNode(passNode, value);
             }
         }
@@ -222,9 +217,12 @@ namespace RimWorldSaveEditor
             healthBox.Text = GetSelectedPawn().pawnHealth.InnerText;
             RefreshSkills();
             RefreshPassions();
+            RefreshHealth();
             RefreshThoughts();
+            RefreshBackstories();
         }
 
+       
         private void healthBox_TextChanged(object sender, EventArgs e)
         {
             handler.ModifyNode(GetSelectedPawn().pawnHealth, healthBox.Text);
@@ -237,13 +235,13 @@ namespace RimWorldSaveEditor
 
         private void ToggleControls()
         {
-            foreach(string key in textBoxes.Keys)
+            foreach(string key in skillTextBoxes.Keys)
             {
-                textBoxes[key].Enabled = !textBoxes[key].Enabled;
+                skillTextBoxes[key].Enabled = !skillTextBoxes[key].Enabled;
             }
-            foreach(string key in comboBoxes.Keys)
+            foreach(string key in skillComboBoxes.Keys)
             {
-                comboBoxes[key].Enabled = !comboBoxes[key].Enabled;
+                skillComboBoxes[key].Enabled = !skillComboBoxes[key].Enabled;
             }
             saveButton.Enabled = !saveButton.Enabled;
             removeThoughtButton.Enabled = !removeThoughtButton.Enabled;
@@ -255,44 +253,44 @@ namespace RimWorldSaveEditor
         }
 
         //Populates SkillName-Control mappings and reverses
-        private void PopulateControlLists()
+        private void PopulateSkillControlLists()
         {
-            textBoxes = new SortedList<string, TextBox>();
-            textBoxes.Add("Artistic", artisticBox);
-            textBoxes.Add("Construction", constructionBox);
-            textBoxes.Add("Cooking", cookingBox);
-            textBoxes.Add("Crafting", craftingBox);
-            textBoxes.Add("Growing", growingBox);
-            textBoxes.Add("Medicine", medicineBox);
-            textBoxes.Add("Melee", meleeBox);
-            textBoxes.Add("Mining", miningBox);
-            textBoxes.Add("Research", researchBox);
-            textBoxes.Add("Shooting", shootingBox);
-            textBoxes.Add("Social", socialBox);
-            textBoxesReverse = textBoxes.ToDictionary(x => x.Value, x => x.Key);
+            skillTextBoxes = new SortedList<string, TextBox>();
+            skillTextBoxes.Add("Artistic", artisticBox);
+            skillTextBoxes.Add("Construction", constructionBox);
+            skillTextBoxes.Add("Cooking", cookingBox);
+            skillTextBoxes.Add("Crafting", craftingBox);
+            skillTextBoxes.Add("Growing", growingBox);
+            skillTextBoxes.Add("Medicine", medicineBox);
+            skillTextBoxes.Add("Melee", meleeBox);
+            skillTextBoxes.Add("Mining", miningBox);
+            skillTextBoxes.Add("Research", researchBox);
+            skillTextBoxes.Add("Shooting", shootingBox);
+            skillTextBoxes.Add("Social", socialBox);
+            skillTextBoxesReverse = skillTextBoxes.ToDictionary(x => x.Value, x => x.Key);
 
 
-            comboBoxes = new SortedList<string, ComboBox>();
-            comboBoxes.Add("Artistic", artisticPassion);
-            comboBoxes.Add("Construction", constructionPassion);
-            comboBoxes.Add("Cooking", cookingPassion);
-            comboBoxes.Add("Crafting", craftingPassion);
-            comboBoxes.Add("Growing", growingPassion);
-            comboBoxes.Add("Medicine", medicinePassion);
-            comboBoxes.Add("Melee", meleePassion);
-            comboBoxes.Add("Mining", miningPassion);
-            comboBoxes.Add("Research", researchPassion);
-            comboBoxes.Add("Shooting", shootingPassion);
-            comboBoxes.Add("Social", socialPassion);
-            comboBoxesReverse = comboBoxes.ToDictionary(x => x.Value, x => x.Key);
+            skillComboBoxes = new SortedList<string, ComboBox>();
+            skillComboBoxes.Add("Artistic", artisticPassion);
+            skillComboBoxes.Add("Construction", constructionPassion);
+            skillComboBoxes.Add("Cooking", cookingPassion);
+            skillComboBoxes.Add("Crafting", craftingPassion);
+            skillComboBoxes.Add("Growing", growingPassion);
+            skillComboBoxes.Add("Medicine", medicinePassion);
+            skillComboBoxes.Add("Melee", meleePassion);
+            skillComboBoxes.Add("Mining", miningPassion);
+            skillComboBoxes.Add("Research", researchPassion);
+            skillComboBoxes.Add("Shooting", shootingPassion);
+            skillComboBoxes.Add("Social", socialPassion);
+            skillComboBoxesReverse = skillComboBoxes.ToDictionary(x => x.Value, x => x.Key);
         }
 
         //the following refresh* methods were made to encapsulate changes so we're not refreshing everything when one thing changes except when needed
         private void RefreshSkills()
         {
-            foreach (string key in textBoxes.Keys)
+            foreach (string key in skillTextBoxes.Keys)
             {
-                textBoxes[key].Text = GetSelectedPawn().skillNodes[key].InnerText;
+                skillTextBoxes[key].Text = GetSelectedPawn().skillNodes[key].InnerText;
             }
 
         }
@@ -300,23 +298,23 @@ namespace RimWorldSaveEditor
         private void RefreshPassions()
         {
 
-            foreach (string key in comboBoxes.Keys)
+            foreach (string key in skillComboBoxes.Keys)
             {
                 if (GetSelectedPawn().passionNodes[key] == null || GetSelectedPawn().passionNodes[key].InnerText == null)
                 {
-                    if (comboBoxes[key].SelectedText != null)
+                    if (skillComboBoxes[key].SelectedText != null)
                     {
-                        comboBoxes[key].ResetText();
+                        skillComboBoxes[key].ResetText();
                     }
-                    comboBoxes[key].SelectedText = "None";
+                    skillComboBoxes[key].SelectedText = "None";
                 }
                 else
                 {
-                    if (comboBoxes[key].SelectedText != null)
+                    if (skillComboBoxes[key].SelectedText != null)
                     {
-                        comboBoxes[key].ResetText();
+                        skillComboBoxes[key].ResetText();
                     }
-                    comboBoxes[key].SelectedText = GetSelectedPawn().passionNodes[key].InnerText;
+                    skillComboBoxes[key].SelectedText = GetSelectedPawn().passionNodes[key].InnerText;
                 }
             }
         }
@@ -328,6 +326,31 @@ namespace RimWorldSaveEditor
             {
                 thoughtBox.Items.Add(defName);
             }
+        }
+
+        private void PopulateBackstories()
+        {
+            adultBackstory.Items.Clear();
+            childBackstory.Items.Clear();
+            foreach(string name in DefDumper.backstoriesAdult.Keys)
+            {
+                adultBackstory.Items.Add(name);
+            }
+            foreach (string name in DefDumper.backstoriesChild.Keys)
+            {
+                childBackstory.Items.Add(name);
+            }
+        }
+
+        private void RefreshHealth()
+        {
+            //TODO: SETUP LATER
+        }
+
+        private void RefreshBackstories()
+        {
+            adultBackstory.SelectedItem = DefDumper.backstoriesAdultReverse[GetSelectedPawn().adulthood.InnerText];
+            childBackstory.SelectedItem = DefDumper.backstoriesChildReverse[GetSelectedPawn().childhood.InnerText];
         }
 
         private void removeThoughtButton_Click(object sender, EventArgs e)
@@ -348,9 +371,11 @@ namespace RimWorldSaveEditor
             }
         }
 
+
+
         private void addThoughtButton_Click(object sender, EventArgs e)
         {
-            string defName = tDefDumper.defListReverse[availableThoughtBox.GetItemText(availableThoughtBox.SelectedItem)];
+            string defName = DefDumper.defListReverse[availableThoughtBox.GetItemText(availableThoughtBox.SelectedItem)];
             if (defName.Contains(':'))
             {
                 defName = defName.Split(':')[0];
@@ -374,13 +399,27 @@ namespace RimWorldSaveEditor
 
             if (Settings.Default.rimworldDirSet)
             {
-                tDefDumper = new ThoughtDefDumper();
-                tDefDumper.Dump();
-                foreach (string defName in tDefDumper.defList.Keys)
-                {
-                    availableThoughtBox.Items.Add(tDefDumper.defList[defName]);
-                }
+                PopulateAvailableThoughts();
             }
+        }
+
+        private void PopulateAvailableThoughts()
+        {
+            DefDumper.DumpThoughts();
+            foreach (string defName in DefDumper.defList.Keys)
+            {
+                availableThoughtBox.Items.Add(DefDumper.defList[defName]);
+            }
+        }
+
+        private void childBackstory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetSelectedPawn().childhood.InnerText = DefDumper.backstoriesChild[childBackstory.GetItemText(childBackstory.SelectedItem)];
+        }
+
+        private void adultBackstory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetSelectedPawn().adulthood.InnerText = DefDumper.backstoriesAdult[adultBackstory.GetItemText(adultBackstory.SelectedItem)];
         }
     }
 }

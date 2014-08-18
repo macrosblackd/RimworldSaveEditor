@@ -31,21 +31,16 @@ namespace RimWorldSaveEditor
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.updateBox = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.healthBox = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.addThoughtButton = new System.Windows.Forms.Button();
-            this.availableThoughtBox = new System.Windows.Forms.ComboBox();
-            this.thoughtBox = new System.Windows.Forms.ListBox();
-            this.removeThoughtButton = new System.Windows.Forms.Button();
-            this.backupCheck = new System.Windows.Forms.CheckBox();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.openFileButton = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.colonistPerks = new System.Windows.Forms.ListBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.adultBackstory = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.childBackstory = new System.Windows.Forms.ComboBox();
+            this.skillsGroup = new System.Windows.Forms.GroupBox();
             this.socialPassion = new System.Windows.Forms.ComboBox();
             this.shootingPassion = new System.Windows.Forms.ComboBox();
             this.researchPassion = new System.Windows.Forms.ComboBox();
@@ -79,14 +74,34 @@ namespace RimWorldSaveEditor
             this.cookingBox = new System.Windows.Forms.TextBox();
             this.constructionBox = new System.Windows.Forms.TextBox();
             this.artisticBox = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.healthBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.addThoughtButton = new System.Windows.Forms.Button();
+            this.availableThoughtBox = new System.Windows.Forms.ComboBox();
+            this.thoughtBox = new System.Windows.Forms.ListBox();
+            this.removeThoughtButton = new System.Windows.Forms.Button();
+            this.dirChangeButton = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.updateBox = new System.Windows.Forms.CheckBox();
+            this.backupCheck = new System.Windows.Forms.CheckBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.openFileButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.colonistListBox = new System.Windows.Forms.ListBox();
-            this.dirChangeButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.skillsGroup.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,214 +111,162 @@ namespace RimWorldSaveEditor
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(579, 437);
+            this.tabControl1.Size = new System.Drawing.Size(579, 483);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.tabControl2);
             this.tabPage1.Controls.Add(this.dirChangeButton);
             this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.updateBox);
-            this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.backupCheck);
             this.tabPage1.Controls.Add(this.saveButton);
             this.tabPage1.Controls.Add(this.openFileButton);
-            this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(571, 411);
+            this.tabPage1.Size = new System.Drawing.Size(571, 457);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Colonist";
             // 
-            // label15
+            // tabControl2
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(325, 341);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(138, 13);
-            this.label15.TabIndex = 10;
-            this.label15.Text = "USE AT YOUR OWN RISK";
+            this.tabControl2.Controls.Add(this.tabPage2);
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Location = new System.Drawing.Point(157, 7);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(411, 347);
+            this.tabControl2.TabIndex = 12;
             // 
-            // label14
+            // tabPage2
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(215, 328);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(349, 13);
-            this.label14.TabIndex = 9;
-            this.label14.Text = "Warning: removing or adding thoughts may have unintended side-effects";
+            this.tabPage2.Controls.Add(this.groupBox6);
+            this.tabPage2.Controls.Add(this.groupBox5);
+            this.tabPage2.Controls.Add(this.skillsGroup);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(403, 321);
+            this.tabPage2.TabIndex = 0;
+            this.tabPage2.Text = "Basic";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // updateBox
+            // groupBox6
             // 
-            this.updateBox.AutoSize = true;
-            this.updateBox.Checked = global::RimWorldSaveEditor.Properties.Settings.Default.updateCheckEnabled;
-            this.updateBox.Location = new System.Drawing.Point(3, 352);
-            this.updateBox.Name = "updateBox";
-            this.updateBox.Size = new System.Drawing.Size(115, 17);
-            this.updateBox.TabIndex = 8;
-            this.updateBox.Text = "Check for Updates";
-            this.updateBox.UseVisualStyleBackColor = true;
-            this.updateBox.CheckedChanged += new System.EventHandler(this.updateBox_CheckedChanged);
+            this.groupBox6.Controls.Add(this.colonistPerks);
+            this.groupBox6.Location = new System.Drawing.Point(204, 158);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(196, 157);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Perks";
             // 
-            // groupBox3
+            // colonistPerks
             // 
-            this.groupBox3.Controls.Add(this.groupBox4);
-            this.groupBox3.Controls.Add(this.addThoughtButton);
-            this.groupBox3.Controls.Add(this.availableThoughtBox);
-            this.groupBox3.Controls.Add(this.thoughtBox);
-            this.groupBox3.Controls.Add(this.removeThoughtButton);
-            this.groupBox3.Location = new System.Drawing.Point(353, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(211, 311);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Thoughts";
+            this.colonistPerks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.colonistPerks.FormattingEnabled = true;
+            this.colonistPerks.Location = new System.Drawing.Point(3, 16);
+            this.colonistPerks.Name = "colonistPerks";
+            this.colonistPerks.Size = new System.Drawing.Size(190, 138);
+            this.colonistPerks.TabIndex = 0;
             // 
-            // groupBox4
+            // groupBox5
             // 
-            this.groupBox4.Controls.Add(this.healthBox);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Location = new System.Drawing.Point(0, 272);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(204, 38);
-            this.groupBox4.TabIndex = 13;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Health";
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.adultBackstory);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.childBackstory);
+            this.groupBox5.Location = new System.Drawing.Point(204, 7);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(196, 143);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Backstory";
             // 
-            // healthBox
+            // label16
             // 
-            this.healthBox.Location = new System.Drawing.Point(6, 13);
-            this.healthBox.Name = "healthBox";
-            this.healthBox.Size = new System.Drawing.Size(47, 20);
-            this.healthBox.TabIndex = 0;
-            this.healthBox.Tag = "health";
-            this.healthBox.TextChanged += new System.EventHandler(this.healthBox_TextChanged);
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(159, 52);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(31, 13);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Adult";
             // 
-            // label12
+            // adultBackstory
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(59, 16);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(38, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Health";
+            this.adultBackstory.FormattingEnabled = true;
+            this.adultBackstory.Location = new System.Drawing.Point(6, 48);
+            this.adultBackstory.Name = "adultBackstory";
+            this.adultBackstory.Size = new System.Drawing.Size(147, 21);
+            this.adultBackstory.Sorted = true;
+            this.adultBackstory.TabIndex = 2;
+            this.adultBackstory.SelectedIndexChanged += new System.EventHandler(this.adultBackstory_SelectedIndexChanged);
             // 
-            // addThoughtButton
+            // label13
             // 
-            this.addThoughtButton.Location = new System.Drawing.Point(59, 241);
-            this.addThoughtButton.Name = "addThoughtButton";
-            this.addThoughtButton.Size = new System.Drawing.Size(100, 25);
-            this.addThoughtButton.TabIndex = 12;
-            this.addThoughtButton.Text = "Add Thought";
-            this.addThoughtButton.UseVisualStyleBackColor = true;
-            this.addThoughtButton.Click += new System.EventHandler(this.addThoughtButton_Click);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(160, 25);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(30, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Child";
             // 
-            // availableThoughtBox
+            // childBackstory
             // 
-            this.availableThoughtBox.FormattingEnabled = true;
-            this.availableThoughtBox.Location = new System.Drawing.Point(6, 214);
-            this.availableThoughtBox.Name = "availableThoughtBox";
-            this.availableThoughtBox.Size = new System.Drawing.Size(199, 21);
-            this.availableThoughtBox.Sorted = true;
-            this.availableThoughtBox.TabIndex = 11;
-            this.availableThoughtBox.Tag = "thoughts";
+            this.childBackstory.FormattingEnabled = true;
+            this.childBackstory.Location = new System.Drawing.Point(7, 21);
+            this.childBackstory.Name = "childBackstory";
+            this.childBackstory.Size = new System.Drawing.Size(147, 21);
+            this.childBackstory.Sorted = true;
+            this.childBackstory.TabIndex = 0;
+            this.childBackstory.SelectedIndexChanged += new System.EventHandler(this.childBackstory_SelectedIndexChanged);
             // 
-            // thoughtBox
+            // skillsGroup
             // 
-            this.thoughtBox.FormattingEnabled = true;
-            this.thoughtBox.Location = new System.Drawing.Point(6, 19);
-            this.thoughtBox.Name = "thoughtBox";
-            this.thoughtBox.Size = new System.Drawing.Size(199, 160);
-            this.thoughtBox.TabIndex = 2;
-            // 
-            // removeThoughtButton
-            // 
-            this.removeThoughtButton.Location = new System.Drawing.Point(59, 185);
-            this.removeThoughtButton.Name = "removeThoughtButton";
-            this.removeThoughtButton.Size = new System.Drawing.Size(100, 23);
-            this.removeThoughtButton.TabIndex = 7;
-            this.removeThoughtButton.Text = "Remove Thought";
-            this.removeThoughtButton.UseVisualStyleBackColor = true;
-            this.removeThoughtButton.Click += new System.EventHandler(this.removeThoughtButton_Click);
-            // 
-            // backupCheck
-            // 
-            this.backupCheck.AutoSize = true;
-            this.backupCheck.Checked = true;
-            this.backupCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.backupCheck.Location = new System.Drawing.Point(144, 352);
-            this.backupCheck.Name = "backupCheck";
-            this.backupCheck.Size = new System.Drawing.Size(99, 17);
-            this.backupCheck.TabIndex = 4;
-            this.backupCheck.Text = "Enable Backup";
-            this.backupCheck.UseVisualStyleBackColor = true;
-            this.backupCheck.CheckedChanged += new System.EventHandler(this.backupCheck_CheckedChanged);
-            // 
-            // saveButton
-            // 
-            this.saveButton.Location = new System.Drawing.Point(84, 323);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(88, 23);
-            this.saveButton.TabIndex = 3;
-            this.saveButton.Text = "Save Changes";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // openFileButton
-            // 
-            this.openFileButton.Location = new System.Drawing.Point(3, 323);
-            this.openFileButton.Name = "openFileButton";
-            this.openFileButton.Size = new System.Drawing.Size(75, 23);
-            this.openFileButton.TabIndex = 2;
-            this.openFileButton.Text = "Load";
-            this.openFileButton.UseVisualStyleBackColor = true;
-            this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.socialPassion);
-            this.groupBox2.Controls.Add(this.shootingPassion);
-            this.groupBox2.Controls.Add(this.researchPassion);
-            this.groupBox2.Controls.Add(this.miningPassion);
-            this.groupBox2.Controls.Add(this.meleePassion);
-            this.groupBox2.Controls.Add(this.medicinePassion);
-            this.groupBox2.Controls.Add(this.growingPassion);
-            this.groupBox2.Controls.Add(this.craftingPassion);
-            this.groupBox2.Controls.Add(this.cookingPassion);
-            this.groupBox2.Controls.Add(this.constructionPassion);
-            this.groupBox2.Controls.Add(this.artisticPassion);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.socialBox);
-            this.groupBox2.Controls.Add(this.shootingBox);
-            this.groupBox2.Controls.Add(this.researchBox);
-            this.groupBox2.Controls.Add(this.miningBox);
-            this.groupBox2.Controls.Add(this.meleeBox);
-            this.groupBox2.Controls.Add(this.medicineBox);
-            this.groupBox2.Controls.Add(this.growingBox);
-            this.groupBox2.Controls.Add(this.craftingBox);
-            this.groupBox2.Controls.Add(this.cookingBox);
-            this.groupBox2.Controls.Add(this.constructionBox);
-            this.groupBox2.Controls.Add(this.artisticBox);
-            this.groupBox2.Location = new System.Drawing.Point(156, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(191, 311);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Skills";
+            this.skillsGroup.Controls.Add(this.socialPassion);
+            this.skillsGroup.Controls.Add(this.shootingPassion);
+            this.skillsGroup.Controls.Add(this.researchPassion);
+            this.skillsGroup.Controls.Add(this.miningPassion);
+            this.skillsGroup.Controls.Add(this.meleePassion);
+            this.skillsGroup.Controls.Add(this.medicinePassion);
+            this.skillsGroup.Controls.Add(this.growingPassion);
+            this.skillsGroup.Controls.Add(this.craftingPassion);
+            this.skillsGroup.Controls.Add(this.cookingPassion);
+            this.skillsGroup.Controls.Add(this.constructionPassion);
+            this.skillsGroup.Controls.Add(this.artisticPassion);
+            this.skillsGroup.Controls.Add(this.label11);
+            this.skillsGroup.Controls.Add(this.label10);
+            this.skillsGroup.Controls.Add(this.label9);
+            this.skillsGroup.Controls.Add(this.label8);
+            this.skillsGroup.Controls.Add(this.label7);
+            this.skillsGroup.Controls.Add(this.label6);
+            this.skillsGroup.Controls.Add(this.label5);
+            this.skillsGroup.Controls.Add(this.label4);
+            this.skillsGroup.Controls.Add(this.label3);
+            this.skillsGroup.Controls.Add(this.label2);
+            this.skillsGroup.Controls.Add(this.label1);
+            this.skillsGroup.Controls.Add(this.socialBox);
+            this.skillsGroup.Controls.Add(this.shootingBox);
+            this.skillsGroup.Controls.Add(this.researchBox);
+            this.skillsGroup.Controls.Add(this.miningBox);
+            this.skillsGroup.Controls.Add(this.meleeBox);
+            this.skillsGroup.Controls.Add(this.medicineBox);
+            this.skillsGroup.Controls.Add(this.growingBox);
+            this.skillsGroup.Controls.Add(this.craftingBox);
+            this.skillsGroup.Controls.Add(this.cookingBox);
+            this.skillsGroup.Controls.Add(this.constructionBox);
+            this.skillsGroup.Controls.Add(this.artisticBox);
+            this.skillsGroup.Location = new System.Drawing.Point(6, 6);
+            this.skillsGroup.Name = "skillsGroup";
+            this.skillsGroup.Size = new System.Drawing.Size(191, 311);
+            this.skillsGroup.TabIndex = 1;
+            this.skillsGroup.TabStop = false;
+            this.skillsGroup.Text = "Skills";
             // 
             // socialPassion
             // 
@@ -614,28 +577,101 @@ namespace RimWorldSaveEditor
             this.artisticBox.Size = new System.Drawing.Size(39, 20);
             this.artisticBox.TabIndex = 0;
             // 
-            // groupBox1
+            // tabPage3
             // 
-            this.groupBox1.Controls.Add(this.colonistListBox);
-            this.groupBox1.Location = new System.Drawing.Point(3, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(147, 311);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Colonists";
+            this.tabPage3.Controls.Add(this.groupBox3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(403, 321);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "Effects";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // colonistListBox
+            // groupBox3
             // 
-            this.colonistListBox.FormattingEnabled = true;
-            this.colonistListBox.Location = new System.Drawing.Point(6, 19);
-            this.colonistListBox.Name = "colonistListBox";
-            this.colonistListBox.Size = new System.Drawing.Size(135, 277);
-            this.colonistListBox.TabIndex = 0;
-            this.colonistListBox.SelectedIndexChanged += new System.EventHandler(this.colonistListBox_SelectedIndexChanged);
+            this.groupBox3.Controls.Add(this.groupBox4);
+            this.groupBox3.Controls.Add(this.addThoughtButton);
+            this.groupBox3.Controls.Add(this.availableThoughtBox);
+            this.groupBox3.Controls.Add(this.thoughtBox);
+            this.groupBox3.Controls.Add(this.removeThoughtButton);
+            this.groupBox3.Location = new System.Drawing.Point(6, 4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(211, 311);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Thoughts";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.healthBox);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Location = new System.Drawing.Point(0, 272);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(204, 38);
+            this.groupBox4.TabIndex = 13;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Health";
+            // 
+            // healthBox
+            // 
+            this.healthBox.Location = new System.Drawing.Point(6, 13);
+            this.healthBox.Name = "healthBox";
+            this.healthBox.Size = new System.Drawing.Size(47, 20);
+            this.healthBox.TabIndex = 0;
+            this.healthBox.Tag = "health";
+            this.healthBox.TextChanged += new System.EventHandler(this.healthBox_TextChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(59, 16);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(38, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Health";
+            // 
+            // addThoughtButton
+            // 
+            this.addThoughtButton.Location = new System.Drawing.Point(59, 241);
+            this.addThoughtButton.Name = "addThoughtButton";
+            this.addThoughtButton.Size = new System.Drawing.Size(100, 25);
+            this.addThoughtButton.TabIndex = 12;
+            this.addThoughtButton.Text = "Add Thought";
+            this.addThoughtButton.UseVisualStyleBackColor = true;
+            this.addThoughtButton.Click += new System.EventHandler(this.addThoughtButton_Click);
+            // 
+            // availableThoughtBox
+            // 
+            this.availableThoughtBox.FormattingEnabled = true;
+            this.availableThoughtBox.Location = new System.Drawing.Point(6, 214);
+            this.availableThoughtBox.Name = "availableThoughtBox";
+            this.availableThoughtBox.Size = new System.Drawing.Size(199, 21);
+            this.availableThoughtBox.Sorted = true;
+            this.availableThoughtBox.TabIndex = 11;
+            this.availableThoughtBox.Tag = "thoughts";
+            // 
+            // thoughtBox
+            // 
+            this.thoughtBox.FormattingEnabled = true;
+            this.thoughtBox.Location = new System.Drawing.Point(6, 19);
+            this.thoughtBox.Name = "thoughtBox";
+            this.thoughtBox.Size = new System.Drawing.Size(199, 160);
+            this.thoughtBox.TabIndex = 2;
+            // 
+            // removeThoughtButton
+            // 
+            this.removeThoughtButton.Location = new System.Drawing.Point(59, 185);
+            this.removeThoughtButton.Name = "removeThoughtButton";
+            this.removeThoughtButton.Size = new System.Drawing.Size(100, 23);
+            this.removeThoughtButton.TabIndex = 7;
+            this.removeThoughtButton.Text = "Remove Thought";
+            this.removeThoughtButton.UseVisualStyleBackColor = true;
+            this.removeThoughtButton.Click += new System.EventHandler(this.removeThoughtButton_Click);
             // 
             // dirChangeButton
             // 
-            this.dirChangeButton.Location = new System.Drawing.Point(6, 375);
+            this.dirChangeButton.Location = new System.Drawing.Point(6, 423);
             this.dirChangeButton.Name = "dirChangeButton";
             this.dirChangeButton.Size = new System.Drawing.Size(138, 28);
             this.dirChangeButton.TabIndex = 11;
@@ -643,22 +679,111 @@ namespace RimWorldSaveEditor
             this.dirChangeButton.UseVisualStyleBackColor = true;
             this.dirChangeButton.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(325, 389);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(138, 13);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "USE AT YOUR OWN RISK";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(215, 376);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(349, 13);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "Warning: removing or adding thoughts may have unintended side-effects";
+            // 
+            // updateBox
+            // 
+            this.updateBox.AutoSize = true;
+            this.updateBox.Checked = global::RimWorldSaveEditor.Properties.Settings.Default.updateCheckEnabled;
+            this.updateBox.Location = new System.Drawing.Point(3, 400);
+            this.updateBox.Name = "updateBox";
+            this.updateBox.Size = new System.Drawing.Size(115, 17);
+            this.updateBox.TabIndex = 8;
+            this.updateBox.Text = "Check for Updates";
+            this.updateBox.UseVisualStyleBackColor = true;
+            this.updateBox.CheckedChanged += new System.EventHandler(this.updateBox_CheckedChanged);
+            // 
+            // backupCheck
+            // 
+            this.backupCheck.AutoSize = true;
+            this.backupCheck.Checked = true;
+            this.backupCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.backupCheck.Location = new System.Drawing.Point(144, 400);
+            this.backupCheck.Name = "backupCheck";
+            this.backupCheck.Size = new System.Drawing.Size(99, 17);
+            this.backupCheck.TabIndex = 4;
+            this.backupCheck.Text = "Enable Backup";
+            this.backupCheck.UseVisualStyleBackColor = true;
+            this.backupCheck.CheckedChanged += new System.EventHandler(this.backupCheck_CheckedChanged);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(84, 371);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(88, 23);
+            this.saveButton.TabIndex = 3;
+            this.saveButton.Text = "Save Changes";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // openFileButton
+            // 
+            this.openFileButton.Location = new System.Drawing.Point(3, 371);
+            this.openFileButton.Name = "openFileButton";
+            this.openFileButton.Size = new System.Drawing.Size(75, 23);
+            this.openFileButton.TabIndex = 2;
+            this.openFileButton.Text = "Load";
+            this.openFileButton.UseVisualStyleBackColor = true;
+            this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.colonistListBox);
+            this.groupBox1.Location = new System.Drawing.Point(3, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(147, 348);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Colonists";
+            // 
+            // colonistListBox
+            // 
+            this.colonistListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.colonistListBox.FormattingEnabled = true;
+            this.colonistListBox.Location = new System.Drawing.Point(3, 16);
+            this.colonistListBox.Name = "colonistListBox";
+            this.colonistListBox.Size = new System.Drawing.Size(141, 329);
+            this.colonistListBox.TabIndex = 0;
+            this.colonistListBox.SelectedIndexChanged += new System.EventHandler(this.colonistListBox_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 460);
+            this.ClientSize = new System.Drawing.Size(594, 503);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.skillsGroup.ResumeLayout(false);
+            this.skillsGroup.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -671,7 +796,7 @@ namespace RimWorldSaveEditor
         private System.Windows.Forms.CheckBox backupCheck;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button openFileButton;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox skillsGroup;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -719,6 +844,16 @@ namespace RimWorldSaveEditor
         private System.Windows.Forms.ComboBox availableThoughtBox;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button dirChangeButton;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ListBox colonistPerks;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox adultBackstory;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox childBackstory;
     }
 }
 
