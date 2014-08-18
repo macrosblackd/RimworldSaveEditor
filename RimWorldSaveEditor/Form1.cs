@@ -139,8 +139,7 @@ namespace RimWorldSaveEditor
                 nodeMap = handler.Populate();
                 colonistListBox.DataSource = nodeMap.pawnNodeList;
                 colonistListBox.DisplayMember = "fullName";
-                DefDumper.DumpBackstories();
-                PopulateBackstories();
+                
 
 
                 if (!toggleOnce)
@@ -164,6 +163,9 @@ namespace RimWorldSaveEditor
             {
                 PopulateAvailableThoughts();
             }
+            DefDumper.DumpBackstories();
+            DefDumper.DumpTraits();
+            PopulateBackstories();
         }
 
         private void SkillTextBoxChanged(object sender, EventArgs args)
@@ -220,6 +222,14 @@ namespace RimWorldSaveEditor
             RefreshHealth();
             RefreshThoughts();
             RefreshBackstories();
+            if(GetSelectedPawn().traits == null || GetSelectedPawn().traits.Count == 0)
+            {
+                PopulateTraits();
+            }
+            else
+            {
+                RefreshTraits();
+            }
         }
 
        
@@ -293,6 +303,15 @@ namespace RimWorldSaveEditor
                 skillTextBoxes[key].Text = GetSelectedPawn().skillNodes[key].InnerText;
             }
 
+        }
+
+        private void RefreshTraits()
+        {
+            colonistPerks.Items.Clear();
+            foreach(string label in GetSelectedPawn().traits.Keys)
+            {
+                colonistPerks.Items.Add(label);
+            }
         }
 
         private void RefreshPassions()
@@ -420,6 +439,13 @@ namespace RimWorldSaveEditor
         private void adultBackstory_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetSelectedPawn().adulthood.InnerText = DefDumper.backstoriesAdult[adultBackstory.GetItemText(adultBackstory.SelectedItem)];
+        }
+
+        private void PopulateTraits()
+        {
+            Dictionary<string, XmlNode> traitList = handler.PopulatePawnTraits(GetSelectedPawn().pawn);
+            GetSelectedPawn().traits = traitList;
+            RefreshTraits();
         }
     }
 }

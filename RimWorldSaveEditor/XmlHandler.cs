@@ -78,6 +78,7 @@ namespace RimWorldSaveEditor
                 workingPawnNode.nameNick = storyNode.SelectSingleNode("name.nick");
                 workingPawnNode.childhood = storyNode.SelectSingleNode("childhood");
                 workingPawnNode.adulthood = storyNode.SelectSingleNode("adulthood");
+
                 //Concatenate full name
                 workingPawnNode.InitNames();
 
@@ -241,7 +242,20 @@ namespace RimWorldSaveEditor
             return thoughtNodeList;
         }
 
-
+        public Dictionary<string, XmlNode> PopulatePawnTraits(XmlNode pawnNode)
+        {
+            Dictionary<string, XmlNode> traits = new Dictionary<string, XmlNode>();
+            XmlNode storyNode = pawnNode.SelectSingleNode("story");
+            XmlNodeList tList = storyNode.SelectNodes("traits/allTraits/li");
+            foreach (XmlNode tNode in tList)
+            {
+                string label = DefDumper.GetLabelFromTraitDef(tNode.SelectSingleNode("def").InnerText, tNode.SelectSingleNode("degree").InnerText);
+                if (label != null)
+                {
+                    traits.Add(label, tNode);
+                }
+            }
+            return traits;
+        }
     }
-
 }

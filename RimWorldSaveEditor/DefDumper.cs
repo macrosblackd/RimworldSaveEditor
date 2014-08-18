@@ -21,6 +21,7 @@ namespace RimWorldSaveEditor
             "Thoughts_PsychicDrone.xml",
             "Thoughts_Traits.xml"
         };
+        static List<String> traitDefFiles = new List<string>(){"Traits_Singular.xml", "Traits_Spectrum.xml"};
 
         //defname, label
         public static SortedList<string, string> defList;
@@ -30,6 +31,7 @@ namespace RimWorldSaveEditor
         public static Dictionary<string, string> backstoriesAdultReverse;
         public static Dictionary<string, string> backstoriesChild;
         public static Dictionary<string, string> backstoriesChildReverse;
+        public static Dictionary<string, Trait> traitList;
 
         
 
@@ -115,6 +117,39 @@ namespace RimWorldSaveEditor
             backstoriesAdultReverse = backstoriesAdult.ToDictionary(x => x.Value, x => x.Key);
             backstoriesChildReverse = backstoriesChild.ToDictionary(x => x.Value, x => x.Key);
         }
-    }
 
+
+        //groundwork for listing available traits to add to a colonist
+        public static void DumpTraits()
+        {
+            traitList = new Dictionary<string, Trait>();
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load("traits.xml");
+            XmlNodeList tNList = xDoc.SelectNodes("TraitDefs/def");
+
+            foreach(XmlNode tNode in tNList)
+            {
+                Trait trait = new Trait()
+                {
+                    defName = tNode.SelectSingleNode("defName").InnerText,
+                    degree = tNode.SelectSingleNode("degree").InnerText
+                };
+
+                traitList.Add(tNode.SelectSingleNode("label").InnerText, trait);
+            }
+
+        }
+
+        public static string GetLabelFromTraitDef(string defName, string degree)
+        {
+            foreach(string label in traitList.Keys)
+            {
+                if(traitList[label].defName == defName && traitList[label].degree == degree)
+                {
+                    return label;
+                }
+            }
+            return null;
+        }
+    }
 }

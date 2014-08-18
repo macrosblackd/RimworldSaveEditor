@@ -32,6 +32,7 @@ namespace RimWorldSaveEditor
             public SortedList<string, XmlNode> thoughtNodes { get; set; }
             public XmlNode childhood { get; set; }
             public XmlNode adulthood { get; set; }
+            public Dictionary<string, XmlNode> traits { get; set; }
             public void InitNames()
             {
                 this.fullName = nameFirst.InnerText + " " + nameNick.InnerText + " " + nameLast.InnerText;
