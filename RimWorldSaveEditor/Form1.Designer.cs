@@ -92,6 +92,9 @@ namespace RimWorldSaveEditor
             this.openFileButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.colonistListBox = new System.Windows.Forms.ListBox();
+            this.traitRemoveBtn = new System.Windows.Forms.Button();
+            this.AvailableTraits = new System.Windows.Forms.ComboBox();
+            this.traitAddBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -158,21 +161,23 @@ namespace RimWorldSaveEditor
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.traitAddBtn);
+            this.groupBox6.Controls.Add(this.AvailableTraits);
+            this.groupBox6.Controls.Add(this.traitRemoveBtn);
             this.groupBox6.Controls.Add(this.colonistPerks);
-            this.groupBox6.Location = new System.Drawing.Point(204, 158);
+            this.groupBox6.Location = new System.Drawing.Point(204, 96);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(196, 157);
+            this.groupBox6.Size = new System.Drawing.Size(196, 219);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Perks";
             // 
             // colonistPerks
             // 
-            this.colonistPerks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.colonistPerks.FormattingEnabled = true;
             this.colonistPerks.Location = new System.Drawing.Point(3, 16);
             this.colonistPerks.Name = "colonistPerks";
-            this.colonistPerks.Size = new System.Drawing.Size(190, 138);
+            this.colonistPerks.Size = new System.Drawing.Size(190, 82);
             this.colonistPerks.TabIndex = 0;
             // 
             // groupBox5
@@ -183,7 +188,7 @@ namespace RimWorldSaveEditor
             this.groupBox5.Controls.Add(this.childBackstory);
             this.groupBox5.Location = new System.Drawing.Point(204, 7);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(196, 143);
+            this.groupBox5.Size = new System.Drawing.Size(196, 86);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Backstory";
@@ -762,6 +767,35 @@ namespace RimWorldSaveEditor
             this.colonistListBox.TabIndex = 0;
             this.colonistListBox.SelectedIndexChanged += new System.EventHandler(this.colonistListBox_SelectedIndexChanged);
             // 
+            // traitRemoveBtn
+            // 
+            this.traitRemoveBtn.Location = new System.Drawing.Point(48, 104);
+            this.traitRemoveBtn.Name = "traitRemoveBtn";
+            this.traitRemoveBtn.Size = new System.Drawing.Size(105, 23);
+            this.traitRemoveBtn.TabIndex = 1;
+            this.traitRemoveBtn.Text = "Remove Selected";
+            this.traitRemoveBtn.UseVisualStyleBackColor = true;
+            this.traitRemoveBtn.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // AvailableTraits
+            // 
+            this.AvailableTraits.FormattingEnabled = true;
+            this.AvailableTraits.Location = new System.Drawing.Point(7, 133);
+            this.AvailableTraits.Name = "AvailableTraits";
+            this.AvailableTraits.Size = new System.Drawing.Size(183, 21);
+            this.AvailableTraits.TabIndex = 2;
+            this.AvailableTraits.Sorted = true;
+            // 
+            // traitAddBtn
+            // 
+            this.traitAddBtn.Location = new System.Drawing.Point(48, 160);
+            this.traitAddBtn.Name = "traitAddBtn";
+            this.traitAddBtn.Size = new System.Drawing.Size(105, 24);
+            this.traitAddBtn.TabIndex = 3;
+            this.traitAddBtn.Text = "Add Selected";
+            this.traitAddBtn.UseVisualStyleBackColor = true;
+            this.traitAddBtn.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -854,6 +888,9 @@ namespace RimWorldSaveEditor
         private System.Windows.Forms.ComboBox adultBackstory;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox childBackstory;
+        private System.Windows.Forms.Button traitAddBtn;
+        private System.Windows.Forms.ComboBox AvailableTraits;
+        private System.Windows.Forms.Button traitRemoveBtn;
     }
 }
 

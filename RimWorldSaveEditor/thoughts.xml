@@ -1,0 +1,313 @@
+<thoughts>
+  <thought>
+    <defName>CurrentlyBrokenPsychotic</defName>
+    <label>Psychotic thoughts</label>
+  </thought>
+  <thought>
+    <defName>CurrentlyBrokenSad</defName>
+    <label>Broken thoughts</label>
+  </thought>
+  <thought>
+    <defName>CurrentlyBrokenPanicFlee</defName>
+    <label>Panic</label>
+  </thought>
+  <thought>
+    <defName>Hungry</defName>
+    <label>Hungry</label>
+    <moodEffect>-8</moodEffect>
+  </thought>
+  <thought>
+    <defName>UrgentlyHungry</defName>
+    <label>Urgently hungry</label>
+    <moodEffect>-20</moodEffect>
+  </thought>
+  <thought>
+    <defName>Starving</defName>
+    <label>Starving</label>
+    <moodEffect>-28</moodEffect>
+  </thought>
+  <thought>
+    <defName>Tired</defName>
+    <label>Tired</label>
+    <moodEffect>-8</moodEffect>
+  </thought>
+  <thought>
+    <defName>VeryTired</defName>
+    <label>Very tired</label>
+    <moodEffect>-15</moodEffect>
+  </thought>
+  <thought>
+    <defName>Exhausted</defName>
+    <label>Exhausted</label>
+    <moodEffect>-20</moodEffect>
+  </thought>
+  <thought>
+    <defName>EnvironmentUgly</defName>
+    <label>Ugly environment</label>
+    <moodEffect>-5</moodEffect>
+  </thought>
+  <thought>
+    <defName>EnvironmentVeryUgly</defName>
+    <label>Very ugly environment</label>
+    <moodEffect>-10</moodEffect>
+  </thought>
+  <thought>
+    <defName>EnvironmentHideous</defName>
+    <label>Hideous environment</label>
+    <moodEffect>-15</moodEffect>
+  </thought>
+  <thought>
+    <defName>EnvironmentPretty</defName>
+    <label>Pleasant environment</label>
+    <moodEffect>5</moodEffect>
+  </thought>
+  <thought>
+    <defName>EnvironmentVeryPretty</defName>
+    <label>Very pleasant environment</label>
+    <moodEffect>10</moodEffect>
+  </thought>
+  <thought>
+    <defName>EnvironmentBeautiful</defName>
+    <label>Beautiful environment</label>
+    <moodEffect>15</moodEffect>
+  </thought>
+  <thought>
+    <defName>EnvironmentCramped</defName>
+    <label>Cramped environment</label>
+    <moodEffect>-5</moodEffect>
+  </thought>
+  <thought>
+    <defName>EnvironmentVeryCramped</defName>
+    <label>Very cramped environment</label>
+    <moodEffect>-10</moodEffect>
+  </thought>
+  <thought>
+    <defName>EnvironmentSpaciousInterior</defName>
+    <label>Spacious interior</label>
+    <moodEffect>5</moodEffect>
+  </thought>
+  <thought>
+    <defName>EnvironmentDark</defName>
+    <label>In darkness</label>
+    <moodEffect>-3</moodEffect>
+  </thought>
+  <thought>
+    <defName>CabinFeverMild</defName>
+    <label>Cabin fever (mild)</label>
+    <moodEffect>0</moodEffect>
+  </thought>
+  <thought>
+    <defName>CabinFeverSerious</defName>
+    <label>Cabin fever (serious)</label>
+    <moodEffect>-5</moodEffect>
+  </thought>
+  <thought>
+    <defName>Imprisoned</defName>
+    <label>Imprisoned</label>
+    <moodEffect>-5</moodEffect>
+  </thought>
+  <thought>
+    <defName>SharedBedroom</defName>
+    <label>Sharing bedroom</label>
+    <moodEffect>-8</moodEffect>
+  </thought>
+  <thought>
+    <defName>ColonistLeftUnburied</defName>
+    <label>Colonist left unburied</label>
+    <moodEffect>-10</moodEffect>
+  </thought>
+  <thought>
+    <defName>HappyNude</defName>
+    <label>Happily nude</label>
+    <moodEffect>10</moodEffect>
+  </thought>
+  <thought>
+    <defName>Naked</defName>
+    <label>Naked</label>
+    <moodEffect>-3</moodEffect>
+  </thought>
+  <thought>
+    <defName>AteRawFood</defName>
+    <label>Ate raw food</label>
+    <moodEffect>-10</moodEffect>
+  </thought>
+  <thought>
+    <defName>AteNutrientPasteMeal</defName>
+    <label>Ate nutrient paste</label>
+    <moodEffect>-5</moodEffect>
+  </thought>
+  <thought>
+    <defName>AteFineMeal</defName>
+    <label>Ate fine meal</label>
+    <moodEffect>5</moodEffect>
+  </thought>
+  <thought>
+    <defName>AteLavishMeal</defName>
+    <label>Ate lavish meal</label>
+    <moodEffect>10</moodEffect>
+  </thought>
+  <thought>
+    <defName>AteHumanoidMeatDirect</defName>
+    <label>Raw cannibalism</label>
+    <moodEffect>-20</moodEffect>
+  </thought>
+  <thought>
+    <defName>AteHumanoidMeatAsIngredient</defName>
+    <label>Cooked cannibalism</label>
+    <moodEffect>-15</moodEffect>
+  </thought>
+  <thought>
+    <defName>AteHumanoidMeatDirectCannibal</defName>
+    <label>Raw cannibalism</label>
+    <moodEffect>20</moodEffect>
+  </thought>
+  <thought>
+    <defName>AteHumanoidMeatAsIngredientCannibal</defName>
+    <label>Cooked cannibalism</label>
+    <moodEffect>15</moodEffect>
+  </thought>
+  <thought>
+    <defName>ButcheredHumanoidCorpse</defName>
+    <label>Butchered humanoid</label>
+    <moodEffect>-4</moodEffect>
+  </thought>
+  <thought>
+    <defName>AteWithoutTable</defName>
+    <label>Ate off the ground </label>
+    <moodEffect>-4</moodEffect>
+  </thought>
+  <thought>
+    <defName>ObservedLayingCorpse</defName>
+    <label>Observed corpse</label>
+    <moodEffect>-2</moodEffect>
+  </thought>
+  <thought>
+    <defName>ObservedLayingRottingCorpse</defName>
+    <label>Observed rotting corpse</label>
+    <moodEffect>-14</moodEffect>
+  </thought>
+  <thought>
+    <defName>WitnessedDeathAlly</defName>
+    <label>Witnessed ally's death</label>
+    <moodEffect>-8</moodEffect>
+  </thought>
+  <thought>
+    <defName>WitnessedDeathStranger</defName>
+    <label>Witnessed stranger's death</label>
+    <moodEffect>-3</moodEffect>
+  </thought>
+  <thought>
+    <defName>WitnessedDeathStrangerBloodlust</defName>
+    <label>Witnessed stranger's death</label>
+    <moodEffect>8</moodEffect>
+  </thought>
+  <thought>
+    <defName>KilledHumanoidBloodlust</defName>
+    <label>Killed someone</label>
+    <moodEffect>13</moodEffect>
+  </thought>
+  <thought>
+    <defName>BattleWounded</defName>
+    <label>Wounded</label>
+    <moodEffect>-3</moodEffect>
+  </thought>
+  <thought>
+    <defName>NewColonyOptimism</defName>
+    <label>New colony optimism</label>
+    <moodEffect>35</moodEffect>
+  </thought>
+  <thought>
+    <defName>NewColonyHope</defName>
+    <label>New colony hope</label>
+    <moodEffect>15</moodEffect>
+  </thought>
+  <thought>
+    <defName>SleptOutside</defName>
+    <label>Slept outside</label>
+    <moodEffect>-5</moodEffect>
+  </thought>
+  <thought>
+    <defName>SleptOnGround</defName>
+    <label>Slept on ground</label>
+    <moodEffect>-5</moodEffect>
+  </thought>
+  <thought>
+    <defName>KnowPrisonerBeaten</defName>
+    <label>A prisoner was beaten</label>
+  </thought>
+  <thought>
+    <defName>KnowPrisonerSold</defName>
+    <label>A prisoner was sold</label>
+    <moodEffect>-8</moodEffect>
+  </thought>
+  <thought>
+    <defName>KnowPrisonerExecuted</defName>
+    <label>A prisoner was executed</label>
+    <moodEffect>-5</moodEffect>
+  </thought>
+  <thought>
+    <defName>JustImprisoned</defName>
+    <label>Just imprisoned</label>
+    <moodEffect>8</moodEffect>
+  </thought>
+  <thought>
+    <defName>PrisonerFriendlyChat</defName>
+    <label>Convinced by warden</label>
+    <moodEffect>2.6</moodEffect>
+  </thought>
+  <thought>
+    <defName>PrisonerBeatenMild</defName>
+    <label>Beaten by warden</label>
+    <moodEffect>-3</moodEffect>
+  </thought>
+  <thought>
+    <defName>PrisonerBeatenVicious</defName>
+    <label>Beaten viciously by warden</label>
+    <moodEffect>-6</moodEffect>
+  </thought>
+  <thought>
+    <defName>SocialTalk</defName>
+    <label>Had social chat</label>
+    <moodEffect>4</moodEffect>
+  </thought>
+  <thought>
+    <defName>PsychicDroneLow</defName>
+    <label>Psychic drone (low)</label>
+    <moodEffect>-7</moodEffect>
+  </thought>
+  <thought>
+    <defName>PsychicDroneMedium</defName>
+    <label>Psychic drone (medium)</label>
+    <moodEffect>-15</moodEffect>
+  </thought>
+  <thought>
+    <defName>PsychicDroneHigh</defName>
+    <label>Psychic drone (high)</label>
+    <moodEffect>-25</moodEffect>
+  </thought>
+  <thought>
+    <defName>PsychicDroneExtreme</defName>
+    <label>Psychic drone (extreme)</label>
+    <moodEffect>-50</moodEffect>
+  </thought>
+  <thought>
+    <defName>MoodOffsetSanguine</defName>
+    <label>Sanguine</label>
+    <moodEffect>15</moodEffect>
+  </thought>
+  <thought>
+    <defName>MoodOffsetOptimist</defName>
+    <label>Optimist</label>
+    <moodEffect>8</moodEffect>
+  </thought>
+  <thought>
+    <defName>MoodOffsetPessimist</defName>
+    <label>Pessimist</label>
+    <moodEffect>-8</moodEffect>
+  </thought>
+  <thought>
+    <defName>MoodOffsetDepressive</defName>
+    <label>Depressive</label>
+    <moodEffect>-15</moodEffect>
+  </thought>
+</thoughts>

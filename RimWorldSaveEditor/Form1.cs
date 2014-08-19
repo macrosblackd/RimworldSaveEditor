@@ -148,21 +148,7 @@ namespace RimWorldSaveEditor
                     toggleOnce = true;
                 }
             }
-            if(!Settings.Default.rimworldDirSet)
-            {
-                FolderBrowserDialog folderSelector = new FolderBrowserDialog();
-                folderSelector.Description = "Please find the path to your rimworld directory. This is important for thoughtDefs and traitDefs to function.";
-                if(folderSelector.ShowDialog() == DialogResult.OK)
-                {
-                    Settings.Default.rimworldDir = folderSelector.SelectedPath;
-                    Settings.Default.rimworldDirSet = true;
-                    Settings.Default.Save();
-                }
-            }
-            if(Settings.Default.rimworldDirSet)
-            {
-                PopulateAvailableThoughts();
-            }
+            PopulateAvailableThoughts();
             DefDumper.DumpBackstories();
             DefDumper.DumpTraits();
             PopulateBackstories();
@@ -445,6 +431,30 @@ namespace RimWorldSaveEditor
         {
             Dictionary<string, XmlNode> traitList = handler.PopulatePawnTraits(GetSelectedPawn().pawn);
             GetSelectedPawn().traits = traitList;
+            RefreshTraits();
+
+            AvailableTraits.Items.Clear();
+            foreach(string trait in DefDumper.traitList.Keys)
+            {
+                AvailableTraits.Items.Add(trait);
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //traitRemoveBtn
+            XmlNode tNode = GetSelectedPawn().traits[colonistPerks.GetItemText(colonistPerks.SelectedItem)];
+            tNode.ParentNode.RemoveChild(tNode);
+            PopulateTraits();
+            RefreshTraits();
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string selection = AvailableTraits.GetItemText(AvailableTraits.SelectedItem);
+            handler.AddTrait(GetSelectedPawn().pawn, DefDumper.traitList[selection].defName, DefDumper.traitList[selection].degree);
+            PopulateTraits();
             RefreshTraits();
         }
     }

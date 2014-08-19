@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RimWorldSaveEditor.Properties
-{
-
-
+namespace RimWorldSaveEditor.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,49 +22,130 @@ namespace RimWorldSaveEditor.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("RimWorldSaveEditor.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;root&gt;
+        ///  &lt;backstory&gt;
+        ///    &lt;title&gt;Colony settler&lt;/title&gt;
+        ///    &lt;def&gt;ColonySettlerSettler548680132&lt;/def&gt;
+        ///    &lt;slot&gt;Adulthood&lt;/slot&gt;
+        ///  &lt;/backstory&gt;
+        ///  &lt;backstory&gt;
+        ///    &lt;title&gt;Medieval farm oaf&lt;/title&gt;
+        ///    &lt;def&gt;MedievalFarmOafOaf-1223929961&lt;/def&gt;
+        ///    &lt;slot&gt;Adulthood&lt;/slot&gt;
+        ///  &lt;/backstory&gt;
+        ///  &lt;backstory&gt;
+        ///    &lt;title&gt;Medieval lord&lt;/title&gt;
+        ///    &lt;def&gt;MedievalLordNoble-1107055137&lt;/def&gt;
+        ///    &lt;slot&gt;Adulthood&lt;/slot&gt;
+        ///  &lt;/backstory&gt;
+        ///  &lt;backstory&gt;
+        ///    &lt;title&gt;Urbworld entrepreneur&lt;/title&gt;
+        ///    &lt;def&gt;UrbworldEntrepren [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string backstory {
+            get {
+                return ResourceManager.GetString("backstory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;thoughts&gt;
+        ///  &lt;thought&gt;
+        ///    &lt;defName&gt;CurrentlyBrokenPsychotic&lt;/defName&gt;
+        ///    &lt;label&gt;Psychotic thoughts&lt;/label&gt;
+        ///  &lt;/thought&gt;
+        ///  &lt;thought&gt;
+        ///    &lt;defName&gt;CurrentlyBrokenSad&lt;/defName&gt;
+        ///    &lt;label&gt;Broken thoughts&lt;/label&gt;
+        ///  &lt;/thought&gt;
+        ///  &lt;thought&gt;
+        ///    &lt;defName&gt;CurrentlyBrokenPanicFlee&lt;/defName&gt;
+        ///    &lt;label&gt;Panic&lt;/label&gt;
+        ///  &lt;/thought&gt;
+        ///  &lt;thought&gt;
+        ///    &lt;defName&gt;Hungry&lt;/defName&gt;
+        ///    &lt;label&gt;Hungry&lt;/label&gt;
+        ///    &lt;moodEffect&gt;-8&lt;/moodEffect&gt;
+        ///  &lt;/thought&gt;
+        ///  &lt;thought&gt;
+        ///    &lt;defName&gt;UrgentlyHungry&lt;/defName&gt;
+        ///    &lt;la [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string thoughts {
+            get {
+                return ResourceManager.GetString("thoughts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;TraitDefs&gt;
+        ///  &lt;def&gt;
+        ///    &lt;defName&gt;Nudist&lt;/defName&gt;
+        ///    &lt;label&gt;Nudist&lt;/label&gt;
+        ///    &lt;degree&gt;1&lt;/degree&gt;
+        ///  &lt;/def&gt;
+        ///  &lt;def&gt;
+        ///    &lt;defName&gt;Bloodlust&lt;/defName&gt;
+        ///    &lt;label&gt;Bloodlust&lt;/label&gt;
+        ///    &lt;degree&gt;1&lt;/degree&gt;
+        ///  &lt;/def&gt;
+        ///  &lt;def&gt;
+        ///    &lt;defName&gt;Psychopath&lt;/defName&gt;
+        ///    &lt;label&gt;Psychopath&lt;/label&gt;
+        ///    &lt;degree&gt;1&lt;/degree&gt;
+        ///  &lt;/def&gt;
+        ///  &lt;def&gt;
+        ///    &lt;defName&gt;Cannibal&lt;/defName&gt;
+        ///    &lt;label&gt;Cannibal&lt;/label&gt;
+        ///    &lt;degree&gt;1&lt;/degree&gt;
+        ///  &lt;/def&gt;
+        ///  &lt;def&gt;
+        ///    &lt;defName&gt;SpeedOffset&lt;/defName&gt;
+        ///    &lt;label&gt;Slowpoke&lt;/label&gt;
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string traits {
+            get {
+                return ResourceManager.GetString("traits", resourceCulture);
             }
         }
     }

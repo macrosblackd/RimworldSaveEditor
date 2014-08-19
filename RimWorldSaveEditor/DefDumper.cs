@@ -21,7 +21,6 @@ namespace RimWorldSaveEditor
             "Thoughts_PsychicDrone.xml",
             "Thoughts_Traits.xml"
         };
-        static List<String> traitDefFiles = new List<string>(){"Traits_Singular.xml", "Traits_Spectrum.xml"};
 
         //defname, label
         public static SortedList<string, string> defList;
@@ -34,37 +33,39 @@ namespace RimWorldSaveEditor
         public static Dictionary<string, Trait> traitList;
 
         
-
+        //Masterlist = label, defName
+        //MoodList = defName, value
         public static void DumpThoughts()
         {
             defList = new SortedList<string, string>();
             moodlist = new Dictionary<string, string>();
-            foreach(string file in thoughtDefFiles)
+            Dictionary<string, int> dupeLabels = new Dictionary<string, int>();
+
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.LoadXml(Resources.thoughts);
+
+            XmlNodeList tList = xDoc.SelectNodes("thoughts/thought");
+            foreach(XmlNode thought in tList)
             {
-                XmlDocument defFile = new XmlDocument();
-                defFile.Load(Settings.Default.rimworldDir + "/Mods/Core/Defs/ThoughtDefs/" + file);
-
-           
-                XmlNodeList thoughtList = defFile.SelectNodes("node()/ThoughtDef");
-                foreach(XmlNode thoughtNode in thoughtList)
+                string label = thought.SelectSingleNode("label").InnerText;
+                if(defList.ContainsKey(label))
                 {
-                    XmlNode nameNode = thoughtNode.SelectSingleNode("defName");
-                    XmlNode labelNode = thoughtNode.SelectSingleNode("label");
-                    XmlNode moodNode = thoughtNode.SelectSingleNode("baseMoodEffect");
-                    string label = labelNode.InnerText;
-                    if (defList.Keys.Contains(label))
+                    if(dupeLabels.ContainsKey(label))
                     {
-                        label = label + ":" + defList.Keys.Count();
+                        label = label + ":" + dupeLabels[thought.SelectSingleNode("label").InnerText].ToString();
+                        dupeLabels[thought.SelectSingleNode("label").InnerText]++;
                     }
-
-                    defList.Add(label, nameNode.InnerText);
-                    if (moodNode != null)
+                    else
                     {
-                        moodlist.Add(nameNode.InnerText, moodNode.InnerText);
+                        dupeLabels.Add(label, 1);
+                        label = label + ":" + "1";
                     }
-
                 }
-
+                defList.Add(label, thought.SelectSingleNode("defName").InnerText);
+                if (thought.SelectSingleNode("moodEffect") != null)
+                {
+                    moodlist.Add(thought.SelectSingleNode("defName").InnerText, thought.SelectSingleNode("moodEffect").InnerText);
+                }
             }
             defListReverse = defList.ToDictionary(x => x.Value, x => x.Key);
         }
@@ -79,7 +80,7 @@ namespace RimWorldSaveEditor
             Dictionary<string, int> dupeCounterChild = new Dictionary<string, int>();
 
             XmlDocument xDoc = new XmlDocument();
-            xDoc.Load("backstory.xml");
+            xDoc.LoadXml(Resources.backstory);
             XmlNodeList stories = xDoc.SelectNodes("root/backstory");
             foreach(XmlNode node in stories)
             {
@@ -124,16 +125,23 @@ namespace RimWorldSaveEditor
         {
             traitList = new Dictionary<string, Trait>();
             XmlDocument xDoc = new XmlDocument();
-            xDoc.Load("traits.xml");
+            xDoc.LoadXml(Resources.traits);
             XmlNodeList tNList = xDoc.SelectNodes("TraitDefs/def");
 
             foreach(XmlNode tNode in tNList)
             {
-                Trait trait = new Trait()
+                Trait trait = new Trait();
+                trait.defName = tNode.SelectSingleNode("defName").InnerText;
+                
+
+                if (tNode.SelectSingleNode("degree") == null)
                 {
-                    defName = tNode.SelectSingleNode("defName").InnerText,
-                    degree = tNode.SelectSingleNode("degree").InnerText
-                };
+                    trait.degree = "none";
+                }
+                else
+                {
+                    trait.degree = tNode.SelectSingleNode("degree").InnerText;
+                }
 
                 traitList.Add(tNode.SelectSingleNode("label").InnerText, trait);
             }
@@ -144,10 +152,16 @@ namespace RimWorldSaveEditor
         {
             foreach(string label in traitList.Keys)
             {
-                if(traitList[label].defName == defName && traitList[label].degree == degree)
+                if (degree == null)
                 {
-                    return label;
+                    degree = "none";
                 }
+
+                if (traitList[label].defName == defName && traitList[label].degree == degree)
+                {
+                     return label;
+                }
+
             }
             return null;
         }

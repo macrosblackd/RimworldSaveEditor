@@ -249,13 +249,39 @@ namespace RimWorldSaveEditor
             XmlNodeList tList = storyNode.SelectNodes("traits/allTraits/li");
             foreach (XmlNode tNode in tList)
             {
-                string label = DefDumper.GetLabelFromTraitDef(tNode.SelectSingleNode("def").InnerText, tNode.SelectSingleNode("degree").InnerText);
+                string deg = null;
+                if (tNode.SelectSingleNode("degree") != null)
+                {
+                    deg = tNode.SelectSingleNode("degree").InnerText;
+                }
+                string label = DefDumper.GetLabelFromTraitDef(tNode.SelectSingleNode("def").InnerText, deg);
                 if (label != null)
                 {
                     traits.Add(label, tNode);
                 }
             }
             return traits;
+        }
+
+        public void AddTrait(XmlNode pawnNode, string defName, string degree)
+        {
+            if(degree == null)
+            {
+                degree = "1";
+            }
+
+            XmlNode top = pawnNode.SelectSingleNode("story/traits/allTraits");
+            XmlElement li = saveFile.CreateElement("li");
+            li.SetAttribute("Class", "Trait");
+            XmlElement def = saveFile.CreateElement("def");
+            XmlElement deg = saveFile.CreateElement("degree");
+            def.InnerText = defName;
+            deg.InnerText = degree;
+
+            li.AppendChild(def);
+            li.AppendChild(deg);
+            top.AppendChild(li);
+
         }
     }
 }
