@@ -1,0 +1,44 @@
+﻿v0.9.6.5
+Pre-release of trait editor. This MAY still have unforseen bugs so keep that backup button checked
+No longer requires rimworld Directory, all necessary files have been re-parsed and inline at compile time.
+Since this is a pre-release I will not be incrementing the version checker.
+
+v0.9.6.0
+Allows modifying Adult and childhood traits.
+Fixes issue with duplicated keys in Dictionary<>;
+
+v0.9.5.0
+Fixed an issue that hasn't come up yet where NodeMap.PawnNode.pawn wasn't being set
+Implemented ThoughtDefDumper
+Ability to add thoughts to colonists with an age of 0 - Use at your own risk(leave the backup box checked yeah?)
+
+
+v0.9.4.1
+Hotfix to work with saves made by a game set to a non-english language
+
+v0.9.4.0
+Ability to remove thoughts - USE AT YOUR OWN RISK - may have unintentional side-effects
+OPT-IN update check
+
+v0.9.3.0
+Update for Alpha 6 compatibility
+Reworked main form logic
+Added passion modification
+
+
+Accidentally left the UI in a semi-ugly state ^^ dat spacing. Will fix with next release
+
+
+v0.9.2.0
+Silent update, source changes only, no release
+
+v0.9.1.1
+
+ Fixed NRE when trying to load a colonist with a skill with no level value
+
+v0.9.1
+ Removed unused debug tab
+ initial public release
+
+v0.9
+ initial release candidate 

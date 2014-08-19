@@ -1,0 +1,7 @@
+﻿Colony Name (See: Research editor)
+Trait editor, requires Def dumper. - implemented, in pre-release
+Health editor - inital release will only allow removing health effects unless I figure out a simple way to dump the bodyModel (May have the information I need now)
+Research editor - Will add colony name when I get to this.
+Scope complete - Polish for final 1.0 release
+
+Any other suggestions
