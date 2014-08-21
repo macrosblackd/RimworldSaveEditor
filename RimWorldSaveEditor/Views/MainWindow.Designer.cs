@@ -1,7 +1,6 @@
-﻿using RimWorldSaveEditor.Properties;
-namespace RimWorldSaveEditor
+namespace RimWorldSaveEditor.Views
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.

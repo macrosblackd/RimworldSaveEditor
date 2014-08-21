@@ -1,23 +1,19 @@
-﻿using System.Xml.Linq;
-using RimWorldSaveEditor.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
+using RimWorldSaveEditor.Properties;
 
-namespace RimWorldSaveEditor
+namespace RimWorldSaveEditor.Views
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form, IMainWindowView
     {
-        string releaseThreadUrl = "http://ludeon.com/forums/index.php?topic=5346.0";
-        string versionCheckUrl = "http://pastebin.com/raw.php?i=3LvpsTWB";
-        string currentVersion;
+        
 
         XmlHandler handler;
         NodeMap nodeMap;
@@ -31,7 +27,7 @@ namespace RimWorldSaveEditor
         bool toggleOnce,updateChecked;
 
         //Will need to null check colony name
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
             Version asmVersion = Assembly.GetExecutingAssembly().GetName().Version;
